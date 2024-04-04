@@ -1,2 +1,2 @@
 # GauntletClone
-Maintained by Justin Lam and Lily Burgess
+Maintained by Excalabreak and Shadowlief
