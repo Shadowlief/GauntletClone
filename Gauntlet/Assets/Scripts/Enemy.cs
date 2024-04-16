@@ -10,6 +10,12 @@ public class Enemy : MonoBehaviour
     protected int pointsOnDefeat;
     protected Coroutine enemyMovement;
     protected bool amMoving = false;
+    //enemy movement speed
+    protected float enemySpeed = 5f;
+    //TEMP CODE LILY!!!
+    //Eventually repurpose into it being the closest player
+    [SerializeField] protected GameObject closestPlayer;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -39,14 +45,14 @@ public class Enemy : MonoBehaviour
     /// </summary>
     protected void MoveMe()
     {
-        Debug.Log("Moving An Enemy");
+        //Debug.Log("Moving An Enemy");
         //gameObject player = findPlayer
         //calculate which player is closest
         //PlayerManager.GetClosestPlayer(this.transform.posistion);
         //private Transform playerLoc = player.transform.posistion;
-        //this.FaceTowards(playLoc);
-        //this.Vect
+        this.transform.position = Vector3.MoveTowards(this.transform.position, closestPlayer.transform.position, enemySpeed * Time.deltaTime);
+        this.transform.up = closestPlayer.transform.position - this.transform.position;
         //if(noPlayer)
-        this.transform.position = this.transform.position + transform.forward;
+        //this.transform.position = this.transform.position + transform.right;
     }
 }

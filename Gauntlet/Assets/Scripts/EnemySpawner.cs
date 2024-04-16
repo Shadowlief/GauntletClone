@@ -52,20 +52,25 @@ public class EnemySpawner : MonoBehaviour
         GameObject babyEnemy = Instantiate(enemyType);
         babyEnemy.transform.position = this.transform.position;
         int childNum = UnityEngine.Random.Range(0, 3);
-        Vector3 newEnemyLoc = Vector3.forward * -2;
+        Vector3 newEnemyLoc = Vector3.up * -2;
         if(childNum == 0) //spawning North
         {
             newEnemyLoc = this.gameObject.transform.GetChild(0).transform.position;
+            Debug.Log("Spawning North");
         }else if(childNum == 1) //spawning East
         {
             newEnemyLoc = this.gameObject.transform.GetChild(1).transform.position;
-        }else if(childNum == 2) //spawning South
+            Debug.Log("Spawning East");
+        }
+        else if(childNum == 2) //spawning South
         {
             newEnemyLoc = this.gameObject.transform.GetChild(2).transform.position;
+            Debug.Log("Spawning South");
         }
         else //spawning West
         {
             newEnemyLoc = this.gameObject.transform.GetChild(3).transform.position;
+            Debug.Log("Spawning West");
         }
         Debug.Log("New Location: " + newEnemyLoc);
         babyEnemy.transform.position = newEnemyLoc;
