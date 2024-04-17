@@ -51,8 +51,19 @@ public class PlayerController : MonoBehaviour
         _virMovement = movement.y;
     }
 
-    private void Update()
+    /// <summary>
+    /// gets horizontal move input
+    /// </summary>
+    public float horMovement
     {
-        Debug.Log(_horMovement + " " + _virMovement);
+        get { return _horMovement; }
+    }
+
+    /// <summary>
+    /// gets vertical move input
+    /// </summary>
+    public float virMovement
+    {
+        get { return _virMovement; }
     }
 }
