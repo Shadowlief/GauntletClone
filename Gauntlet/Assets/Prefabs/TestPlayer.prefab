@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 3913780591474259051}
   - component: {fileID: 7931894370643173513}
   - component: {fileID: 748463635496194161}
+  - component: {fileID: 5936505272218940157}
   m_Layer: 0
   m_Name: TestPlayer
   m_TagString: Untagged
@@ -286,6 +287,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 4094188c-218b-44a6-ad01-75e7dc88d671
     m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4362871472305141918}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnShoot
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 24cbbf79-1f2a-43c0-b4b3-4d86006a5a65
+    m_ActionName: Player/Shoot[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: Player
@@ -340,3 +357,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startingStats: {fileID: 11400000, guid: ee9747aa8926c7c4495d73ae407eedef, type: 2}
+--- !u!114 &5936505272218940157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8643000073709220220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c06872c30aaa54e98ddf62e6b84a68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectile: {fileID: 0}
+  _fireRate: 0.5
