@@ -27,9 +27,12 @@ public class PlayerLocomotion : MonoBehaviour
     /// </summary>
     private void HandleMovement()
     {
-        Vector3 move = new Vector3(_playerController.horMovement, _playerController.virMovement, 0);
+        if (!_playerController.shoot)
+        {
+            Vector3 move = new Vector3(_playerController.horMovement, _playerController.virMovement, 0);
 
-        transform.position += move * _playerData.currentMovementSpeed * Time.deltaTime;
+            transform.position += move * _playerData.currentMovementSpeed * Time.deltaTime;
+        }
     }
     
     /// <summary>

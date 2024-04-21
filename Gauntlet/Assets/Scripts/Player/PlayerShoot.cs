@@ -14,6 +14,7 @@ public class PlayerShoot : MonoBehaviour
     private PlayerData _playerData;
 
     [SerializeField] private GameObject _projectile;
+    [SerializeField] private float _spawnFrom = .75f;
 
     private bool _canShoot = true;
     [SerializeField] private float _fireRate = .5f;
@@ -40,7 +41,11 @@ public class PlayerShoot : MonoBehaviour
     private IEnumerator Shoot()
     {
         _canShoot = false;
-        Debug.Log("Bang");
+
+        Vector3 spawn = transform.position + (transform.up * _spawnFrom);
+        GameObject projectile = Instantiate(_projectile, spawn, transform.rotation);
+        projectile.GetComponent<PlayerProjectileScript>().SetUp(_playerData.currentShotSpeed, _playerData.currentShotStrength);
+
         yield return new WaitForSeconds(_fireRate);
         _canShoot = true;
     }
