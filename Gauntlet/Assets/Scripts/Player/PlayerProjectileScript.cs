@@ -36,4 +36,14 @@ public class PlayerProjectileScript : MonoBehaviour
             transform.position += transform.up * _speed * Time.deltaTime;
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<BaseHealthScript>() != null)
+        {
+            other.GetComponent<BaseHealthScript>().Damage(_damage);
+        }
+
+        Destroy(gameObject);
+    }
 }

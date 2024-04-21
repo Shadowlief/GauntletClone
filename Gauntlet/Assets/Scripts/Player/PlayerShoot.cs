@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [04/18/2024]
+ * Last Updated: [04/20/2024]
  * [Script that handles the player's shooting]
  */
 
