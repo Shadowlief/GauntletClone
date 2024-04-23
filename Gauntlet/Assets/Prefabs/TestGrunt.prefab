@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 637219102038104128}
   - component: {fileID: 7248110591226920434}
   - component: {fileID: 930350931576196603}
-  - component: {fileID: 197401369135428244}
+  - component: {fileID: 4070521315340660625}
+  - component: {fileID: 8407897828371320283}
+  - component: {fileID: 3235499889733124038}
   m_Layer: 0
   m_Name: TestGrunt
   m_TagString: Untagged
@@ -106,7 +108,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &197401369135428244
+--- !u!114 &4070521315340660625
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,6 +117,48 @@ MonoBehaviour:
   m_GameObject: {fileID: 6546790542749553420}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b4b871dab833214298f352fc1567e29, type: 3}
+  m_Script: {fileID: 11500000, guid: accb43d1b7f4b334aa3bce79aea59afd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  closestPlayer: {fileID: 0}
+--- !u!114 &8407897828371320283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6546790542749553420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3115b586342fdd5438d2e4815e307efd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 15
+  _isMeleeable: 1
+--- !u!54 &3235499889733124038
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6546790542749553420}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 72
+  m_CollisionDetection: 0

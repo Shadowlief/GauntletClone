@@ -32,7 +32,7 @@ public class EnemeyHealthScript : MonoBehaviour, BaseHealthScript
 
     public void OnDeath()
     {
-
+        Destroy(this.gameObject);
     }
 
     public bool isMeleeable
