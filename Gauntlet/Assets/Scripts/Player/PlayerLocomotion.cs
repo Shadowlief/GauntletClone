@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [04/20/2024]
+ * Last Updated: [04/22/2024]
  * [Handles Movement]
  */
 
@@ -12,6 +12,10 @@ public class PlayerLocomotion : MonoBehaviour
 {
     private PlayerData _playerData;
     private PlayerController _playerController;
+
+    private Ray _ray;
+    private float _stopDistance = .51f;
+    public LayerMask _layersToStopMoving;
 
     /// <summary>
     /// get needed components
@@ -27,7 +31,8 @@ public class PlayerLocomotion : MonoBehaviour
     /// </summary>
     private void HandleMovement()
     {
-        if (!_playerController.shoot)
+        _ray = new Ray(transform.position, transform.up);
+        if (!_playerController.shoot && !Physics.Raycast(_ray, out RaycastHit hit, _stopDistance, _layersToStopMoving, QueryTriggerInteraction.Collide))
         {
             Vector3 move = new Vector3(_playerController.horMovement, _playerController.virMovement, 0);
 

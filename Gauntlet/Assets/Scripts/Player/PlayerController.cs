@@ -28,8 +28,6 @@ public class PlayerController : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         _movementInput = context.ReadValue<Vector2>();
-        //bool moveTrig = context.action.WasPressedThisFrame();
-        //check melee
 
         Vector2 movement = Vector2.zero;
         if (_movementInput.x > 0)

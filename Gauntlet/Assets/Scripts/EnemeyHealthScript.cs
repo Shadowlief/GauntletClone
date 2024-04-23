@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [04/20/2024]
+ * Last Updated: [04/22/2024]
  * [enemy health]
  */
 
@@ -12,6 +12,7 @@ public class EnemeyHealthScript : MonoBehaviour, BaseHealthScript
 {
     [SerializeField] private int _health;
     private int _currentHealth;
+    [SerializeField] private bool _isMeleeable = true;
 
     private void OnEnable()
     {
@@ -32,5 +33,10 @@ public class EnemeyHealthScript : MonoBehaviour, BaseHealthScript
     public void OnDeath()
     {
 
+    }
+
+    public bool isMeleeable
+    {
+        get { return _isMeleeable; }
     }
 }
