@@ -41,7 +41,7 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawnTimer()
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(5.0f);
         SpawnEnemy();
         amSpawning = false;
     }
@@ -54,7 +54,7 @@ public class EnemySpawner : MonoBehaviour
     /// </summary>
     private void SpawnEnemy()
     {
-        Debug.Log("Spawning Enemy!");
+        //Debug.Log("Spawning Enemy!");
         GameObject babyEnemy = Instantiate(enemyType);
         babyEnemy.transform.position = this.transform.position;
         int childNum = UnityEngine.Random.Range(0, 3);
@@ -62,23 +62,23 @@ public class EnemySpawner : MonoBehaviour
         if(childNum == 0) //spawning North
         {
             newEnemyLoc = this.gameObject.transform.GetChild(0).transform.position;
-            Debug.Log("Spawning North");
+            //Debug.Log("Spawning North");
         }else if(childNum == 1) //spawning East
         {
             newEnemyLoc = this.gameObject.transform.GetChild(1).transform.position;
-            Debug.Log("Spawning East");
+            //Debug.Log("Spawning East");
         }
         else if(childNum == 2) //spawning South
         {
             newEnemyLoc = this.gameObject.transform.GetChild(2).transform.position;
-            Debug.Log("Spawning South");
+            //Debug.Log("Spawning South");
         }
         else //spawning West
         {
             newEnemyLoc = this.gameObject.transform.GetChild(3).transform.position;
-            Debug.Log("Spawning West");
+            //Debug.Log("Spawning West");
         }
-        Debug.Log("New Location: " + newEnemyLoc);
+        //Debug.Log("New Location: " + newEnemyLoc);
         babyEnemy.transform.position = newEnemyLoc;
         //if(legalPos)
         //find nearest legal spot

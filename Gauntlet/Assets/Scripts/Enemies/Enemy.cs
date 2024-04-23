@@ -78,6 +78,7 @@ public abstract class Enemy : MonoBehaviour
         //might make this an OnColliderEnter function
         if(other.tag == "Player")
         {
+            Debug.Log("Attacking The Player!");
             Attack(other.gameObject);
         }
     }
