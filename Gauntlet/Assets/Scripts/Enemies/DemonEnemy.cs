@@ -2,14 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Author: [Burgess, Lillian]
+ * Last Updated: [04/19/2024]
+ * [Demon Enemy]
+ */
+
 public class DemonEnemy : Enemy
 {
     protected bool inMeele = false;
     protected bool amShooting = false;
     protected Coroutine shootBuffer;
-    protected override void Awake()
+    protected void Awake()
     {
-        base.Awake();
         if (enemyLvl == 3)
             enemyAttkStr = 10;
         else if (enemyLvl == 2)
@@ -60,7 +65,7 @@ public class DemonEnemy : Enemy
         //and stop shooting!!
         inMeele = true;
         StopCoroutine(ShootBuffer());
-        //player.GetComponent(PlayerController).DamageMe(enemyAttkStr);
+        player.GetComponent<PlayerHealth>().Damage(enemyAttkStr);
     }
     protected void OnTriggerExit(Collider other)
     {

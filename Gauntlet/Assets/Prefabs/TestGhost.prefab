@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7343785925372497117}
   - component: {fileID: 1262034189452771074}
   - component: {fileID: -8211108559745249422}
+  - component: {fileID: 6213026435431923623}
   m_Layer: 0
   m_Name: TestGhost
   m_TagString: Untagged
@@ -147,3 +148,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 72
   m_CollisionDetection: 0
+--- !u!114 &6213026435431923623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666240992215176802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3115b586342fdd5438d2e4815e307efd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 15
+  _isMeleeable: 1

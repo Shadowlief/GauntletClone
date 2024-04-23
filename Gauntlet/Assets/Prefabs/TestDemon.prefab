@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4351918427343353156}
   - component: {fileID: 2307343258272918088}
   - component: {fileID: 6969453538467536023}
+  - component: {fileID: 4581806941762474773}
   m_Layer: 0
   m_Name: TestDemon
   m_TagString: Untagged
@@ -133,3 +134,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 72
   m_CollisionDetection: 0
+--- !u!114 &4581806941762474773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7822540814688790449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3115b586342fdd5438d2e4815e307efd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 15
+  _isMeleeable: 1

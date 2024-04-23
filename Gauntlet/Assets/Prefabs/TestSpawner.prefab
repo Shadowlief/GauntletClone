@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 5788645656350408079}
   - component: {fileID: 5431119708065290633}
   - component: {fileID: -6674754655228752794}
+  - component: {fileID: 8545273825313258966}
   m_Layer: 0
   m_Name: TestSpawner
   m_TagString: Untagged
@@ -213,6 +214,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &8545273825313258966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7743586126689193885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3115b586342fdd5438d2e4815e307efd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 30
+  _isMeleeable: 1
 --- !u!1 &7862973457192236750
 GameObject:
   m_ObjectHideFlags: 0

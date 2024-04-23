@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7248110591226920434}
   - component: {fileID: 930350931576196603}
   - component: {fileID: 4070521315340660625}
+  - component: {fileID: 8407897828371320283}
   - component: {fileID: 3235499889733124038}
   m_Layer: 0
   m_Name: TestGrunt
@@ -120,6 +121,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   closestPlayer: {fileID: 0}
+--- !u!114 &8407897828371320283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6546790542749553420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3115b586342fdd5438d2e4815e307efd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 15
+  _isMeleeable: 1
 --- !u!54 &3235499889733124038
 Rigidbody:
   m_ObjectHideFlags: 0

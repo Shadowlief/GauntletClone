@@ -67,6 +67,7 @@ GameObject:
   - component: {fileID: 3626144526095373738}
   - component: {fileID: 6252675575458586443}
   - component: {fileID: 7715789693828641883}
+  - component: {fileID: 2246854926904426898}
   m_Layer: 0
   m_Name: TestLobber
   m_TagString: Untagged
@@ -201,3 +202,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 72
   m_CollisionDetection: 0
+--- !u!114 &2246854926904426898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3274250809472940327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3115b586342fdd5438d2e4815e307efd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 15
+  _isMeleeable: 0

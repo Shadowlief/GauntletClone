@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+/*
+ * Author: [Burgess, Lillian]
+ * Last Updated: [04/12/2024]
+ * [Sorcerer Enemy]
+ */
+
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject enemyType;

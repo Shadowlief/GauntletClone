@@ -3,6 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Author: [Burgess, Lillian]
+ * Last Updated: [04/19/2024]
+ * [Base Enemy]
+ */
 public abstract class Enemy : MonoBehaviour
 {
     protected int enemyLvl = 1; //CHANGE ME!!  Make me equal to my spawner level!
@@ -20,7 +25,7 @@ public abstract class Enemy : MonoBehaviour
     protected Vector3 moveToMe;
     protected GameObject[] closestPlr;
 
-    protected virtual void Awake()
+    protected virtual void OnEnable()
     {
         enemyHP = 10 * enemyLvl;
     }

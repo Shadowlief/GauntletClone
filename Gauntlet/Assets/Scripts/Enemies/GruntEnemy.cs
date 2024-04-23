@@ -2,11 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Author: [Burgess, Lillian]
+ * Last Updated: [04/19/2024]
+ * [Grunt Enemy]
+ */
+
 public class GruntEnemy : Enemy
 {
-    protected override void Awake()
+    protected void Awake()
     {
-        base.Awake();
         if (enemyLvl == 3)
             enemyAttkStr = 10;
         else if (enemyLvl == 2)
@@ -18,6 +23,6 @@ public class GruntEnemy : Enemy
     }
     protected override void Attack(GameObject player)
     {
-        //player.GetComponent(PlayerController).DamageMe(enemyAttkStr);
+        player.GetComponent<PlayerHealth>().Damage(enemyAttkStr);
     }
 }

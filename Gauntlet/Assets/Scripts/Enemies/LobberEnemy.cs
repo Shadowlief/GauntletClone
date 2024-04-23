@@ -2,13 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/*
+ * Author: [Burgess, Lillian]
+ * Last Updated: [04/19/2024]
+ * [Lobber Enemy]
+ */
 public class LobberEnemy : Enemy
 {
     protected bool amShooting = false;
     protected Coroutine shootBuffer;
-    protected override void Awake()
+    protected void Awake()
     {
-        base.Awake();
         enemyShotStr = 3;
         enemyAttkStr = 0;
         pointsOnDefeat = 5 * enemyLvl;

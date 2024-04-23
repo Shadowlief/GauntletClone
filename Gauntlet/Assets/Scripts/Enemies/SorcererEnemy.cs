@@ -2,15 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Author: [Burgess, Lillian]
+ * Last Updated: [04/19/2024]
+ * [Sorcerer Enemy]
+ */
+
 public class SorcererEnemy : Enemy
 {
     protected bool inMeele = false;
     protected bool amShooting = false;
     protected Coroutine shootBuffer;
     protected bool amInvisible = false;
-    protected override void Awake()
+    protected void Awake()
     {
-        base.Awake();
         if (enemyLvl == 3)
             enemyAttkStr = 10;
         else if (enemyLvl == 2)
@@ -80,7 +85,7 @@ public class SorcererEnemy : Enemy
         //and stop shooting!!
         inMeele = true;
         StopCoroutine(ShootBuffer());
-        //player.GetComponent(PlayerController).DamageMe(enemyAttkStr);
+        player.GetComponent<PlayerHealth>().Damage(enemyAttkStr);
     }
     protected void OnTriggerExit(Collider other)
     {
