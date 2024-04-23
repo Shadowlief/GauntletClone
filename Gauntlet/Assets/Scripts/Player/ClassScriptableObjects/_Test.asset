@@ -16,6 +16,6 @@ MonoBehaviour:
   _movementSpeed: 1
   _defence: 1
   _shotStrength: 1
-  _shotSpeed: 1
+  _shotSpeed: 3
   _meleeStrength: 1
   _magicStrength: 1
