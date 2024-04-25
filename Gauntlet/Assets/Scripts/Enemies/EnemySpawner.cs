@@ -18,6 +18,15 @@ public class EnemySpawner : MonoBehaviour
     private bool amSpawning = false;
     Coroutine spawner;
 
+    public int GetSpawnLvl()
+    {
+        return spawnLevel;
+    }
+    public void SetSpawnLvl(int actualLevel)
+    {
+        spawnLevel = actualLevel;
+    }
+
     private void Start()
     {
         spawner = StartCoroutine(SpawnTimer());
@@ -56,6 +65,8 @@ public class EnemySpawner : MonoBehaviour
     {
         //Debug.Log("Spawning Enemy!");
         GameObject babyEnemy = Instantiate(enemyType);
+        babyEnemy.GetComponent<Enemy>().SetEnemyLvl(spawnLevel);
+        babyEnemy.GetComponent<EnemeyHealthScript>().SetEnemyHpTrue(spawnLevel);
         babyEnemy.transform.position = this.transform.position;
         int childNum = UnityEngine.Random.Range(0, 3);
         Vector3 newEnemyLoc = Vector3.up * -2;

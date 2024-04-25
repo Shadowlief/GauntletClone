@@ -10,7 +10,7 @@ using UnityEngine;
  */
 public abstract class Enemy : MonoBehaviour
 {
-    protected int enemyLvl = 1; //CHANGE ME!!  Make me equal to my spawner level!
+    protected int enemyLvl; 
     protected int enemyHP;
     protected int enemyAttkStr;
     protected int enemyShotStr;
@@ -33,10 +33,19 @@ public abstract class Enemy : MonoBehaviour
     {
         enemyHP = n;
     }
+    public int GetEnemyLvl()
+    {
+        return enemyLvl;
+    }
+    public void SetEnemyLvl(int n)
+    {
+        enemyLvl = n;
+    }
 
     protected virtual void OnEnable()
     {
-        enemyHP = 10 * enemyLvl;
+        //enemyHP = 10 * enemyLvl;
+        enemyHP = 10;
     }
 
     // Start is called before the first frame update
