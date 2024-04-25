@@ -29,6 +29,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
+        this.GetComponent<EnemeyHealthScript>().SetEnemyHpTrue(spawnLevel);
         spawner = StartCoroutine(SpawnTimer());
     }
 
@@ -38,6 +39,16 @@ public class EnemySpawner : MonoBehaviour
         {
             amSpawning = true;
             spawner = StartCoroutine(SpawnTimer());
+        }
+        if (spawnLevel == 3 && this.GetComponent<EnemeyHealthScript>().GetCurrentHealth() <= 20)
+        {
+            spawnLevel--;
+            Debug.Log("Spawn Level (should be 2) = " + spawnLevel);
+        }
+        else if (spawnLevel == 2 && this.GetComponent<EnemeyHealthScript>().GetCurrentHealth() <= 10)
+        {
+            spawnLevel--;
+            Debug.Log("Spawn Level (should be 1)  = " + spawnLevel);
         }
     }
     private void OnTriggerEnter(Collider other)
