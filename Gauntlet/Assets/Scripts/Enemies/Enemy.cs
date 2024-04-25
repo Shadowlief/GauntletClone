@@ -5,7 +5,7 @@ using UnityEngine;
 
 /*
  * Author: [Burgess, Lillian]
- * Last Updated: [04/19/2024]
+ * Last Updated: [04/25/2024]
  * [Base Enemy]
  */
 public abstract class Enemy : MonoBehaviour
@@ -64,10 +64,13 @@ public abstract class Enemy : MonoBehaviour
             amMoving = true;
             enemyMovement = StartCoroutine(MovementTimer());
         }
+        //if I'm a lv3 enemy and I loose 1/3 of my health, decreace my level by 1
         if(enemyLvl == 3 && this.GetComponent<EnemeyHealthScript>().GetCurrentHealth() <= 20)
         {
             DegradePower(enemyLvl);
-        }else if(enemyLvl == 2 && this.GetComponent<EnemeyHealthScript>().GetCurrentHealth() <= 10)
+        }
+        //if I'm a lv2 enemy and I loose one half of my health, decreace my level by 1
+        else if(enemyLvl == 2 && this.GetComponent<EnemeyHealthScript>().GetCurrentHealth() <= 10)
         {
             DegradePower(enemyLvl);
         }

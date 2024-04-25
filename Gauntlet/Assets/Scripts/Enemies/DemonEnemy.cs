@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Burgess, Lillian]
- * Last Updated: [04/19/2024]
+ * Last Updated: [04/25/2024]
  * [Demon Enemy]
  */
 
@@ -13,6 +13,10 @@ public class DemonEnemy : Enemy
     protected bool inMeele = false;
     protected bool amShooting = false;
     protected Coroutine shootBuffer;
+    [SerializeField] protected GameObject demonProjectile;
+    protected float spawnFrom = 2f;
+    private float fireRate = 0.5f;
+    private float shotSpeed = 1f;
     protected void Awake()
     {
         if (enemyLvl == 3)
@@ -48,14 +52,16 @@ public class DemonEnemy : Enemy
     //then say that I can fire again
     protected IEnumerator ShootBuffer()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(fireRate);
         Shoot();
         amShooting = false;
     }
     protected void Shoot()
     {
         Debug.Log("FIRE AWAY!!");
-        //Instantiate(DemonProjectile);
+        Vector3 spawnLoc = transform.position + (transform.up * spawnFrom);
+        GameObject yeetus = Instantiate(demonProjectile, spawnLoc, transform.rotation);
+        yeetus.GetComponent<EnemyProjectile>().SetUp(shotSpeed, enemyShotStr);
         //Future me note: Shots damage enemies, potions, and players
     }
     protected override void Attack(GameObject player)
@@ -75,6 +81,11 @@ public class DemonEnemy : Enemy
         }
     }
 
+    /// <summary>
+    /// decreace the level of the enemy by 1
+    /// and adjust offensive (and possibly defensive) stats accordingly
+    /// </summary>
+    /// <param name="oldLvl"></param>
     protected override void DegradePower(int oldLvl)
     {
         int currLvl = oldLvl--;

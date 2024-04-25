@@ -5,13 +5,17 @@ using UnityEngine;
 
 /*
  * Author: [Burgess, Lillian]
- * Last Updated: [04/19/2024]
+ * Last Updated: [04/25/2024]
  * [Lobber Enemy]
  */
 public class LobberEnemy : Enemy
 {
     protected bool amShooting = false;
     protected Coroutine shootBuffer;
+    [SerializeField] protected GameObject lobberProjectile;
+    protected float spawnFrom = 2f;
+    private float fireRate = 0.5f;
+    private float shotSpeed = 1f;
     protected void Awake()
     {
         enemyShotStr = 3;
@@ -42,14 +46,16 @@ public class LobberEnemy : Enemy
     //then say that I can fire again
     protected IEnumerator ShootBuffer()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(fireRate);
         Shoot();
         amShooting = false;
     }
     protected void Shoot()
     {
         Debug.Log("FIRE AWAY!!");
-        //Instantiate(lobberProjectile);
+        Vector3 spawnLoc = transform.position + (transform.up * spawnFrom);
+        GameObject yeetus = Instantiate(lobberProjectile, spawnLoc, transform.rotation);
+        yeetus.GetComponent<EnemyProjectile>().SetUp(shotSpeed, enemyShotStr);
         //Future me note: Shots damage enemies, potions, and players
         //lobber shots also go over walls?
     }
@@ -68,6 +74,11 @@ public class LobberEnemy : Enemy
         this.transform.position = Vector3.MoveTowards(this.transform.position, closestPlayer.transform.position, (enemySpeed + 20) * -1 * Time.deltaTime);
     }
 
+    /// <summary>
+    /// decreace the level of the enemy by 1
+    /// and (possibly defensive) stats accordingly
+    /// </summary>
+    /// <param name="oldLvl"></param>
     protected override void DegradePower(int oldLvl)
     {
         int currLvl = oldLvl--;

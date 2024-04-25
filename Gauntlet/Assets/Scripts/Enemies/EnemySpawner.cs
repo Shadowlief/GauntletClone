@@ -5,7 +5,7 @@ using UnityEngine;
 
 /*
  * Author: [Burgess, Lillian]
- * Last Updated: [04/12/2024]
+ * Last Updated: [04/25/2024]
  * [Sorcerer Enemy]
  */
 
@@ -35,16 +35,19 @@ public class EnemySpawner : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //if I am not spawning, start spawnign
         if (!amSpawning)
         {
             amSpawning = true;
             spawner = StartCoroutine(SpawnTimer());
         }
+        //if I'm a lv3 spawner and I loose 1/3 of my hp, decreace my level by 1
         if (spawnLevel == 3 && this.GetComponent<EnemeyHealthScript>().GetCurrentHealth() <= 20)
         {
             spawnLevel--;
             Debug.Log("Spawn Level (should be 2) = " + spawnLevel);
         }
+        //if I'm a lv2 spawner and I loose half of my hp, decreace my level by 1
         else if (spawnLevel == 2 && this.GetComponent<EnemeyHealthScript>().GetCurrentHealth() <= 10)
         {
             spawnLevel--;
