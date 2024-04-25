@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5164ae7aab3b8f84ea10942190f99e74, type: 3}
   m_Name: Elf
   m_EditorClassIdentifier: 
-  _hp: 0
-  _movementSpeed: 0
-  _defence: 0
-  _shotStrength: 0
-  _shotSpeed: 0
-  _meleeStrength: 0
-  _magicStrength: 0
+  _hp: 2000
+  _movementSpeed: 6
+  _defence: 1
+  _shotStrength: 1
+  _shotSpeed: 7
+  _meleeStrength: 1
+  _magicStrength: 3
