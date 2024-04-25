@@ -25,6 +25,15 @@ public abstract class Enemy : MonoBehaviour
     protected Vector3 moveToMe;
     protected GameObject[] closestPlr;
 
+    public int GetEnemyHP()
+    {
+        return enemyHP;
+    }
+    public void SetEnemyHP(int n)
+    {
+        enemyHP = n;
+    }
+
     protected virtual void OnEnable()
     {
         enemyHP = 10 * enemyLvl;

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5345768356878866277}
   - component: {fileID: 3392433161304962386}
   - component: {fileID: 6428519153782030006}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TestSorcerer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

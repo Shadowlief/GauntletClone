@@ -16,7 +16,9 @@ public class EnemeyHealthScript : MonoBehaviour, BaseHealthScript
 
     private void OnEnable()
     {
+        _health = this.GetComponent<Enemy>().GetEnemyHP();
         _currentHealth = _health;
+        Debug.Log("Health: " + _currentHealth);
     }
 
     public void Damage(int damage)

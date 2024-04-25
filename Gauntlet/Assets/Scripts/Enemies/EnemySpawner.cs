@@ -12,7 +12,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject enemyType;
-    private int spawnLevel;
+    [SerializeField] private int spawnLevel;
     private int spawnerHp;
     private int enemyCap;
     private bool amSpawning = false;
