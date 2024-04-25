@@ -25,4 +25,14 @@ public class GruntEnemy : Enemy
     {
         player.GetComponent<PlayerHealth>().Damage(enemyAttkStr);
     }
+    protected override void DegradePower(int oldLvl)
+    {
+        int currLvl = oldLvl- 1;
+        SetEnemyLvl(currLvl);
+        Debug.Log("New Level (should be 1): " + GetEnemyLvl());
+        if (enemyLvl == 2)
+            enemyAttkStr = 8;
+        else
+            enemyAttkStr = 5;
+    }
 }

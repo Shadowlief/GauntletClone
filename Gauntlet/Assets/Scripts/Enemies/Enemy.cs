@@ -64,6 +64,13 @@ public abstract class Enemy : MonoBehaviour
             amMoving = true;
             enemyMovement = StartCoroutine(MovementTimer());
         }
+        if(enemyLvl == 3 && this.GetComponent<EnemeyHealthScript>().GetCurrentHealth() <= 20)
+        {
+            DegradePower(enemyLvl);
+        }else if(enemyLvl == 2 && this.GetComponent<EnemeyHealthScript>().GetCurrentHealth() <= 10)
+        {
+            DegradePower(enemyLvl);
+        }
     }
 
     protected IEnumerator MovementTimer()
@@ -102,4 +109,5 @@ public abstract class Enemy : MonoBehaviour
     }
 
     protected abstract void Attack(GameObject player);
+    protected abstract void DegradePower(int oldLvl);
 }

@@ -19,7 +19,10 @@ public class EnemeyHealthScript : MonoBehaviour, BaseHealthScript
         _currentHealth = _health;
         //Debug.Log("Health: " + _currentHealth);
     }
-
+    public int GetCurrentHealth()
+    {
+        return _currentHealth;
+    }
     public void SetEnemyHpTrue(int enemyLvl)
     {
         _health = _health * enemyLvl;

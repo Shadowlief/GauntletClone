@@ -21,4 +21,12 @@ public class GhostEnemy : Enemy
         player.GetComponent<PlayerHealth>().Damage(enemyAttkStr);
         Destroy(this.gameObject);
     }
+
+    protected override void DegradePower(int oldLvl)
+    {
+        int currLvl = oldLvl--;
+        SetEnemyLvl(currLvl);
+        Debug.Log("New Level (should be 1): " + GetEnemyLvl());
+        enemyAttkStr = 10 * enemyLvl;
+    }
 }

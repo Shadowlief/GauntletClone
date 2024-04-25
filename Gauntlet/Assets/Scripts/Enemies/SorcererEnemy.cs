@@ -95,4 +95,15 @@ public class SorcererEnemy : Enemy
         }
         //WHILE INVISIBLE, CANNOT BE THE TARGET OF DAMAGING ATTACKS!!!
     }
+
+    protected override void DegradePower(int oldLvl)
+    {
+        int currLvl = oldLvl--;
+        SetEnemyLvl(currLvl);
+        Debug.Log("New Level (should be 1): " + GetEnemyLvl());
+        if (enemyLvl == 2)
+            enemyAttkStr = 8;
+        else
+            enemyAttkStr = 5;
+    }
 }

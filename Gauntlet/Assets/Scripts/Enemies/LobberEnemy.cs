@@ -67,4 +67,11 @@ public class LobberEnemy : Enemy
         this.transform.up = closestPlayer.transform.position - this.transform.position;
         this.transform.position = Vector3.MoveTowards(this.transform.position, closestPlayer.transform.position, (enemySpeed + 20) * -1 * Time.deltaTime);
     }
+
+    protected override void DegradePower(int oldLvl)
+    {
+        int currLvl = oldLvl--;
+        SetEnemyLvl(currLvl);
+        Debug.Log("New Level (should be 1): " + GetEnemyLvl());
+    }
 }
