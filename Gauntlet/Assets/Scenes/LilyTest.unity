@@ -463,7 +463,7 @@ PrefabInstance:
         type: 3}
       propertyPath: enemyType
       value: 
-      objectReference: {fileID: 7822540814688790449, guid: 867c4be984e2e5a4389ae33bed5785bf,
+      objectReference: {fileID: 6546790542749553420, guid: 2a94ae3428b51214ab8d06d585b86ec9,
         type: 3}
     - target: {fileID: 5431119708065290633, guid: ce563de5aeff46246b02684472af1a18,
         type: 3}
