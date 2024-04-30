@@ -5,7 +5,7 @@ using UnityEngine;
 
 /*
  * Author: [Burgess, Lillian]
- * Last Updated: [04/25/2024]
+ * Last Updated: [04/30/2024]
  * [Base Enemy]
  */
 public abstract class Enemy : MonoBehaviour
@@ -92,12 +92,36 @@ public abstract class Enemy : MonoBehaviour
         //Debug.Log("Moving An Enemy");
         //gameObject player = findPlayer
         //calculate which player is closest
-        //PlayerManager.GetClosestPlayer(this.transform.posistion);
-        //moveToMe = GameManager.Instance.FindClosestPlayer(this.transform.posistion);
+        FindClosestPlayer();
+        Debug.Log("Closest Player = " + closestPlayer);
         this.transform.position = Vector3.MoveTowards(this.transform.position, closestPlayer.transform.position, enemySpeed * Time.deltaTime);
         this.transform.up = closestPlayer.transform.position - this.transform.position;
         //if(noPlayer)
         //this.transform.position = this.transform.position + transform.right;
+    }
+
+    /// <summary>
+    /// Find the closest player
+    /// How it's done:
+    /// starting from its own posistion, fire off a OverlapSphere w/a radius of 50, storing all the players into an array
+    /// if the amount of players is > 1, calculate the distances between itself and the players
+    /// whichever difference is the smallest is the closest player
+    /// assign the correct distance
+    /// </summary>
+    protected virtual void FindClosestPlayer()
+    {
+        Vector3 myself = this.transform.position;
+        Collider[] players = new Collider[4];
+        int playerCount = Physics.OverlapSphereNonAlloc(myself, 50, players);
+        if(playerCount > 1)
+        {
+            Debug.Log("Find the closest player!");
+            closestPlayer = players[0].gameObject;
+        }
+        else
+        {
+            closestPlayer = players[0].gameObject;
+        }
     }
 
     protected void OnTriggerEnter(Collider other)
