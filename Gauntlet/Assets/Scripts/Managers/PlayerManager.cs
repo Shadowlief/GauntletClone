@@ -4,19 +4,21 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [04/20/2024]
+ * Last Updated: [04/30/2024]
  * [Singleton to manage player]
  */
 
 public class PlayerManager : Singleton<PlayerManager>
 {
     private Dictionary<ClassEnum, bool> _availableClasses = new Dictionary<ClassEnum, bool>();
+    private List<GameObject> _currentPlayers = new List<GameObject>();
 
     private void OnEnable()
     {
-        foreach (KeyValuePair<ClassEnum, bool> playerClass in _availableClasses)
-        {
-            _availableClasses[playerClass.Key] = false;
-        }
+        _availableClasses.Add(ClassEnum.Warrior, false);
+        _availableClasses.Add(ClassEnum.Elf, false);
+        _availableClasses.Add(ClassEnum.Valkarie, false);
+        _availableClasses.Add(ClassEnum.Wizard, false);
+
     }
 }
