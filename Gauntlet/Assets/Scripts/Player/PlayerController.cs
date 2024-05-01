@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [04/18/2024]
+ * Last Updated: [04/30/2024]
  * [Script that has functions that are called for a player's control]
  */
 
@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     private float _virMovement;
 
     private bool _shoot = false;
+
+    private bool _hasChosenClass = false;
 
     /// <summary>
     /// put in Movement in Player Input
@@ -58,6 +60,11 @@ public class PlayerController : MonoBehaviour
         _shoot = context.action.triggered;
     }
 
+    public void ChosenClass()
+    {
+        _hasChosenClass = true;
+    }
+
     /// <summary>
     /// gets horizontal move input
     /// </summary>
@@ -77,5 +84,10 @@ public class PlayerController : MonoBehaviour
     public bool shoot
     {
         get { return _shoot; }
+    }
+
+    public bool hasChosenClass
+    {
+        get { return _hasChosenClass; }
     }
 }
