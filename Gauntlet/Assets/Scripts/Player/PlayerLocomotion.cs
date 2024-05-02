@@ -90,7 +90,10 @@ public class PlayerLocomotion : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        HandleMovement();
-        HandleRotation();
+        if (_playerController.hasChosenClass)
+        {
+            HandleMovement();
+            HandleRotation();
+        }
     }
 }

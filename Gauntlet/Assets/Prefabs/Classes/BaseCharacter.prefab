@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 9ece5991718754240bf654662c804249, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -224,8 +224,9 @@ GameObject:
   - component: {fileID: 748463635496194161}
   - component: {fileID: 5936505272218940157}
   - component: {fileID: 2874406924011664781}
+  - component: {fileID: 1196388532503421102}
   m_Layer: 0
-  m_Name: TestPlayer
+  m_Name: BaseCharacter
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -276,7 +277,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 9ece5991718754240bf654662c804249, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -460,7 +461,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6db150508ab46614f879a64ed43a0f49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startingStats: {fileID: 11400000, guid: ee9747aa8926c7c4495d73ae407eedef, type: 2}
 --- !u!114 &5936505272218940157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -489,3 +489,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471d80230dcf03147b81d1b48ad16153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1196388532503421102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8643000073709220220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed1a2d5066a46fc49872c54d1ecbdc44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stats:
+  - {fileID: 11400000, guid: 4e0ae0ec10647554da54785c4969f548, type: 2}
+  - {fileID: 11400000, guid: 33178a3716ae9bf488744d71a2635e02, type: 2}
+  - {fileID: 11400000, guid: 0410a9cf37e7f7e4aa11b10be782af72, type: 2}
+  - {fileID: 11400000, guid: 55c996cf6a8fc1a429753a4470e46245, type: 2}
+  _materials:
+  - {fileID: 2100000, guid: 8218681003856e642be96f6ccb730315, type: 2}
+  - {fileID: 2100000, guid: 54e99a83f47b40e4290c71d2fc37a04b, type: 2}
+  - {fileID: 2100000, guid: 7684abedc19c159468d3aa3fb7a19dc8, type: 2}
+  - {fileID: 2100000, guid: 09217f67e64b31e4e9e6930416ace21f, type: 2}

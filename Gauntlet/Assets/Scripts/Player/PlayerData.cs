@@ -4,13 +4,12 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [04/11/2024]
+ * Last Updated: [04/30/2024]
  * [Script for players current stats]
  */
 
 public class PlayerData : MonoBehaviour, ICharacterElement
 {
-    [SerializeField] private ClassStats _startingStats;
     private int _currentHp;
     private float _currentMovementSpeed;
     private int _currentDefence;
@@ -20,17 +19,17 @@ public class PlayerData : MonoBehaviour, ICharacterElement
     private int _currentMagicStrength;
 
     /// <summary>
-    /// on enabled, set the stats
+    /// set the stats
     /// </summary>
-    private void OnEnable()
+    public void SetStats(ClassStats startingStats)
     {
-        _currentHp = _startingStats.hp;
-        _currentMovementSpeed = _startingStats.movementSpeed;
-        _currentDefence = _startingStats.defence;
-        _currentShotStrength = _startingStats.shotStrength;
-        _currentShotSpeed = _startingStats.shotSpeed;
-        _currentMeleeStrength = _startingStats.meleeStrength;
-        _currentMagicStrength = _startingStats.magicStrength;
+        _currentHp = startingStats.hp;
+        _currentMovementSpeed = startingStats.movementSpeed;
+        _currentDefence = startingStats.defence;
+        _currentShotStrength = startingStats.shotStrength;
+        _currentShotSpeed = startingStats.shotSpeed;
+        _currentMeleeStrength = startingStats.meleeStrength;
+        _currentMagicStrength = startingStats.magicStrength;
     }
 
     /// <summary>

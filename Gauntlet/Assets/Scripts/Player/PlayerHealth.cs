@@ -12,11 +12,18 @@ public class PlayerHealth : MonoBehaviour, BaseHealthScript
 {
     private PlayerData _playerData;
 
+    /// <summary>
+    /// get needed components
+    /// </summary>
     private void OnEnable()
     {
         _playerData = GetComponent<PlayerData>();
     }
 
+    /// <summary>
+    /// damages player
+    /// </summary>
+    /// <param name="damage">how much damage to inflict</param>
     public void Damage(int damage)
     {
         _playerData.currentHp -= (damage - _playerData.currentDefence);
@@ -27,8 +34,11 @@ public class PlayerHealth : MonoBehaviour, BaseHealthScript
         }
     }
 
+    /// <summary>
+    /// what happens on death
+    /// </summary>
     public void OnDeath()
     {
-        Debug.Log("player died");
+        Destroy(transform.root.gameObject);
     }
 }
