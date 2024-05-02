@@ -113,7 +113,7 @@ public abstract class Enemy : MonoBehaviour
     /// </summary>
     protected virtual void FindClosestPlayer()
     {
-        playerCount = Physics.OverlapSphereNonAlloc(this.transform.position, 50, players, 0);  //replace 0 with the int of the layer mask of Players
+        playerCount = Physics.OverlapSphereNonAlloc(this.transform.position, 50, players, 8);  //replace 0 with the int of the layer mask of Players
         if(playerCount > 1)
         {
             Debug.Log("Find the closest player!");
