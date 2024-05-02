@@ -5,7 +5,7 @@ using UnityEngine;
 
 /*
  * Author: [Burgess, Lillian]
- * Last Updated: [04/25/2024]
+ * Last Updated: [05/02/2024]
  * [Sorcerer Enemy]
  */
 
@@ -17,6 +17,7 @@ public class EnemySpawner : MonoBehaviour
     private int enemyCap;
     private bool amSpawning = false;
     Coroutine spawner;
+    GameObject babyEnemy;
 
     public int GetSpawnLvl()
     {
@@ -62,6 +63,7 @@ public class EnemySpawner : MonoBehaviour
         //health = health - attack
     }
 
+    //the timer for when to spawn enemies
     private IEnumerator SpawnTimer()
     {
         yield return new WaitForSeconds(5.0f);
@@ -78,7 +80,7 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnEnemy()
     {
         //Debug.Log("Spawning Enemy!");
-        GameObject babyEnemy = Instantiate(enemyType);
+        babyEnemy = Instantiate(enemyType);
         babyEnemy.GetComponent<Enemy>().SetEnemyLvl(spawnLevel);
         babyEnemy.GetComponent<EnemeyHealthScript>().SetEnemyHpTrue(spawnLevel);
         babyEnemy.transform.position = this.transform.position;

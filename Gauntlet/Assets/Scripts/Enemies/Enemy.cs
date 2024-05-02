@@ -5,7 +5,7 @@ using UnityEngine;
 
 /*
  * Author: [Burgess, Lillian]
- * Last Updated: [04/30/2024]
+ * Last Updated: [05/02/2024]
  * [Base Enemy]
  */
 public abstract class Enemy : MonoBehaviour
@@ -24,6 +24,8 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] protected GameObject closestPlayer;
     protected Vector3 moveToMe;
     protected GameObject[] closestPlr;
+    protected Collider[] players;
+    protected int playerCount;
 
     public int GetEnemyHP()
     {
@@ -54,6 +56,7 @@ public abstract class Enemy : MonoBehaviour
         enemyMovement = StartCoroutine(MovementTimer());
         closestPlr = GameObject.FindGameObjectsWithTag("Player");
         closestPlayer = closestPlr[0];
+        players = new Collider[4];
     }
 
     // Update is called once per frame
@@ -93,7 +96,7 @@ public abstract class Enemy : MonoBehaviour
         //gameObject player = findPlayer
         //calculate which player is closest
         FindClosestPlayer();
-        Debug.Log("Closest Player = " + closestPlayer);
+        //Debug.Log("Closest Player = " + closestPlayer);
         this.transform.position = Vector3.MoveTowards(this.transform.position, closestPlayer.transform.position, enemySpeed * Time.deltaTime);
         this.transform.up = closestPlayer.transform.position - this.transform.position;
         //if(noPlayer)
@@ -110,15 +113,13 @@ public abstract class Enemy : MonoBehaviour
     /// </summary>
     protected virtual void FindClosestPlayer()
     {
-        Vector3 myself = this.transform.position;
-        Collider[] players = new Collider[4];
-        int playerCount = Physics.OverlapSphereNonAlloc(myself, 50, players);
+        playerCount = Physics.OverlapSphereNonAlloc(this.transform.position, 50, players, 0);  //replace 0 with the int of the layer mask of Players
         if(playerCount > 1)
         {
             Debug.Log("Find the closest player!");
             closestPlayer = players[0].gameObject;
         }
-        else
+        else if(playerCount == 1) //why this is an else if instead of an else is to catch the situation of if it doesn't find a player that's within a 50 unit radius
         {
             closestPlayer = players[0].gameObject;
         }
@@ -132,6 +133,7 @@ public abstract class Enemy : MonoBehaviour
         {
             Debug.Log("Attacking The Player!");
             Attack(other.gameObject);
+            amMoving = true;
         }
     }
 

@@ -5,7 +5,7 @@ using UnityEngine;
 
 /*
  * Author: [Burgess, Lillian]
- * Last Updated: [04/25/2024]
+ * Last Updated: [05/02/2024]
  * [Lobber Enemy]
  */
 public class LobberEnemy : Enemy
@@ -14,8 +14,10 @@ public class LobberEnemy : Enemy
     protected Coroutine shootBuffer;
     [SerializeField] protected GameObject lobberProjectile;
     protected float spawnFrom = 2f;
-    private float fireRate = 0.5f;
-    private float shotSpeed = 1f;
+    private float _fireRate = 0.5f;
+    private float _shotSpeed = 1f;
+    protected Vector3 spawnLoc;
+    protected GameObject yeetus;
     protected void Awake()
     {
         enemyShotStr = 3;
@@ -46,16 +48,16 @@ public class LobberEnemy : Enemy
     //then say that I can fire again
     protected IEnumerator ShootBuffer()
     {
-        yield return new WaitForSeconds(fireRate);
+        yield return new WaitForSeconds(_fireRate);
         Shoot();
         amShooting = false;
     }
     protected void Shoot()
     {
         Debug.Log("FIRE AWAY!!");
-        Vector3 spawnLoc = transform.position + (transform.up * spawnFrom);
-        GameObject yeetus = Instantiate(lobberProjectile, spawnLoc, transform.rotation);
-        yeetus.GetComponent<EnemyProjectile>().SetUp(shotSpeed, enemyShotStr);
+        spawnLoc = transform.position + (transform.up * spawnFrom);
+        yeetus = Instantiate(lobberProjectile, spawnLoc, transform.rotation);
+        yeetus.GetComponent<EnemyProjectile>().SetUp(_shotSpeed, enemyShotStr);
         //Future me note: Shots damage enemies, potions, and players
         //lobber shots also go over walls?
     }

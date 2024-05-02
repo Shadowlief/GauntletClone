@@ -15,8 +15,10 @@ public class DemonEnemy : Enemy
     protected Coroutine shootBuffer;
     [SerializeField] protected GameObject demonProjectile;
     protected float spawnFrom = 2f;
-    private float fireRate = 0.5f;
-    private float shotSpeed = 1f;
+    private float _fireRate = 0.5f;
+    private float _shotSpeed = 1f;
+    protected Vector3 spawnLoc;
+    protected GameObject yeetus;
     protected void Awake()
     {
         if (enemyLvl == 3)
@@ -52,16 +54,16 @@ public class DemonEnemy : Enemy
     //then say that I can fire again
     protected IEnumerator ShootBuffer()
     {
-        yield return new WaitForSeconds(fireRate);
+        yield return new WaitForSeconds(_fireRate);
         Shoot();
         amShooting = false;
     }
     protected void Shoot()
     {
         Debug.Log("FIRE AWAY!!");
-        Vector3 spawnLoc = transform.position + (transform.up * spawnFrom);
-        GameObject yeetus = Instantiate(demonProjectile, spawnLoc, transform.rotation);
-        yeetus.GetComponent<EnemyProjectile>().SetUp(shotSpeed, enemyShotStr);
+        spawnLoc = transform.position + (transform.up * spawnFrom);
+        yeetus = Instantiate(demonProjectile, spawnLoc, transform.rotation);
+        yeetus.GetComponent<EnemyProjectile>().SetUp(_shotSpeed, enemyShotStr);
         //Future me note: Shots damage enemies, potions, and players
     }
     protected override void Attack(GameObject player)
