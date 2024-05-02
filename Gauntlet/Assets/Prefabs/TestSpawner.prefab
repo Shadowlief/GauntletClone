@@ -77,7 +77,7 @@ GameObject:
   - component: {fileID: 5431119708065290633}
   - component: {fileID: -6674754655228752794}
   - component: {fileID: 8545273825313258966}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TestSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,6 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: {fileID: 0}
+  spawnLevel: 0
 --- !u!54 &-6674754655228752794
 Rigidbody:
   m_ObjectHideFlags: 0

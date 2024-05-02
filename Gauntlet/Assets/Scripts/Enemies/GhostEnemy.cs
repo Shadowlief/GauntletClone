@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Burgess, Lillian]
- * Last Updated: [04/19/2024]
+ * Last Updated: [04/25/2024]
  * [Ghost Enemy]
  */
 public class GhostEnemy : Enemy
@@ -20,5 +20,18 @@ public class GhostEnemy : Enemy
     {
         player.GetComponent<PlayerHealth>().Damage(enemyAttkStr);
         Destroy(this.gameObject);
+    }
+
+    /// <summary>
+    /// decreace the level of the enemy by 1
+    /// and adjust offensive (and possibly defensive) stats accordingly
+    /// </summary>
+    /// <param name="oldLvl"></param>
+    protected override void DegradePower(int oldLvl)
+    {
+        int currLvl = oldLvl--;
+        SetEnemyLvl(currLvl);
+        Debug.Log("New Level (should be 1): " + GetEnemyLvl());
+        enemyAttkStr = 10 * enemyLvl;
     }
 }
