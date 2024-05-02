@@ -69,4 +69,9 @@ public class PlayerManager : Singleton<PlayerManager>
         }
         return null;
     }
+
+    public int GetPlayerCount()
+    {
+        return _currentPlayers.Count;
+    }
 }

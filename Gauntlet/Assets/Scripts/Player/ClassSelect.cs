@@ -17,8 +17,15 @@ public class ClassSelect : MonoBehaviour
     [SerializeField] private ClassStats[] _stats = new ClassStats[4];
     [SerializeField] private Material[] _materials = new Material[4];
 
+    /// <summary>
+    /// get needed components and spawns player at first alive player
+    /// </summary>
     private void OnEnable()
     {
+        if (PlayerManager.Instance.GetPlayerCount() >= 4)
+        {
+            Destroy(transform.root.gameObject);
+        }
         _playerData = GetComponent<PlayerData>();
         _playerController = GetComponent<PlayerController>();
         _meshRenderer = GetComponent<MeshRenderer>();
@@ -30,6 +37,9 @@ public class ClassSelect : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// handles picking class by movements
+    /// </summary>
     private void HandleClassSelection()
     {
         ClassEnum selectedClass = ClassEnum.Warrior;
