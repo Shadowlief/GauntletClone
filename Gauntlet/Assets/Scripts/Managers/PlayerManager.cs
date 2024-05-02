@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [04/30/2024]
+ * Last Updated: [05/02/2024]
  * [Singleton to manage player]
  */
 
 public class PlayerManager : Singleton<PlayerManager>
 {
     private Dictionary<ClassEnum, bool> _availableClasses = new Dictionary<ClassEnum, bool>();
-    //private List<PlayerInput> _currentPlayers = new List<PlayerInput>();
+    private List<GameObject> _currentPlayers = new List<GameObject>();
 
     /// <summary>
     /// adds all classes to list
@@ -42,5 +43,30 @@ public class PlayerManager : Singleton<PlayerManager>
     public void ClaimClass(ClassEnum claim)
     {
         _availableClasses[claim] = false;
+    }
+
+    /// <summary>
+    /// adds player to _current player
+    /// </summary>
+    /// <param name="player">player being added</param>
+    public void AddPlayer(GameObject player)
+    {
+        _currentPlayers.Add(player);
+    }
+
+    /// <summary>
+    /// returns the first player that is alive
+    /// </summary>
+    /// <returns>gameobject of first player alive</returns>
+    public GameObject GetFirstAlivePlayer()
+    {
+        for (int index = 0; index < _currentPlayers.Count; index++)
+        {
+            if (_currentPlayers[index] != null)
+            {
+                return _currentPlayers[index];
+            }
+        }
+        return null;
     }
 }

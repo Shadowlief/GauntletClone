@@ -22,6 +22,12 @@ public class ClassSelect : MonoBehaviour
         _playerData = GetComponent<PlayerData>();
         _playerController = GetComponent<PlayerController>();
         _meshRenderer = GetComponent<MeshRenderer>();
+
+        GameObject loc = PlayerManager.Instance.GetFirstAlivePlayer();
+        if (loc != null)
+        {
+            transform.position = loc.transform.position;
+        }
     }
 
     private void HandleClassSelection()
@@ -66,6 +72,7 @@ public class ClassSelect : MonoBehaviour
         {
             _playerController.ChosenClass();
             PlayerManager.Instance.ClaimClass(selectedClass);
+            PlayerManager.Instance.AddPlayer(gameObject);
         }
     }
 
