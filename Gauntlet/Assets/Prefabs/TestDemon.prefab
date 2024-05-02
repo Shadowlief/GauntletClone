@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 2307343258272918088}
   - component: {fileID: 6969453538467536023}
   - component: {fileID: 4581806941762474773}
-  m_Layer: 0
+  - component: {fileID: 1942109870741578433}
+  m_Layer: 7
   m_Name: TestDemon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,5 +147,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3115b586342fdd5438d2e4815e307efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 15
+  _health: 10
   _isMeleeable: 1
+--- !u!114 &1942109870741578433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7822540814688790449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5d0027977a0fd543be15f1e01284f0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closestPlayer: {fileID: 0}
+  demonProjectile: {fileID: 1149918757540138124, guid: 638b7bae67a187e4f940055317672f1a,
+    type: 3}

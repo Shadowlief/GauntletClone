@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Burgess, Lillian]
- * Last Updated: [04/19/2024]
+ * Last Updated: [04/25/2024]
  * [Demon Enemy]
  */
 
@@ -13,6 +13,12 @@ public class DemonEnemy : Enemy
     protected bool inMeele = false;
     protected bool amShooting = false;
     protected Coroutine shootBuffer;
+    [SerializeField] protected GameObject demonProjectile;
+    protected float spawnFrom = 2f;
+    private float _fireRate = 0.5f;
+    private float _shotSpeed = 1f;
+    protected Vector3 spawnLoc;
+    protected GameObject yeetus;
     protected void Awake()
     {
         if (enemyLvl == 3)
@@ -48,14 +54,16 @@ public class DemonEnemy : Enemy
     //then say that I can fire again
     protected IEnumerator ShootBuffer()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(_fireRate);
         Shoot();
         amShooting = false;
     }
     protected void Shoot()
     {
         Debug.Log("FIRE AWAY!!");
-        //Instantiate(DemonProjectile);
+        spawnLoc = transform.position + (transform.up * spawnFrom);
+        yeetus = Instantiate(demonProjectile, spawnLoc, transform.rotation);
+        yeetus.GetComponent<EnemyProjectile>().SetUp(_shotSpeed, enemyShotStr);
         //Future me note: Shots damage enemies, potions, and players
     }
     protected override void Attack(GameObject player)
@@ -73,5 +81,21 @@ public class DemonEnemy : Enemy
         {
             inMeele = false;
         }
+    }
+
+    /// <summary>
+    /// decreace the level of the enemy by 1
+    /// and adjust offensive (and possibly defensive) stats accordingly
+    /// </summary>
+    /// <param name="oldLvl"></param>
+    protected override void DegradePower(int oldLvl)
+    {
+        int currLvl = oldLvl--;
+        SetEnemyLvl(currLvl);
+        Debug.Log("New Level (should be 1): " + GetEnemyLvl());
+        if (enemyLvl == 2)
+            enemyAttkStr = 8;
+        else
+            enemyAttkStr = 5;
     }
 }

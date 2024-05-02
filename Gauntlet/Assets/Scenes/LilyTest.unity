@@ -463,8 +463,13 @@ PrefabInstance:
         type: 3}
       propertyPath: enemyType
       value: 
-      objectReference: {fileID: 6546790542749553420, guid: 2a94ae3428b51214ab8d06d585b86ec9,
+      objectReference: {fileID: 8676268720930270552, guid: 8e3c779fb8eaadc4fa36b13660d3dec5,
         type: 3}
+    - target: {fileID: 5431119708065290633, guid: ce563de5aeff46246b02684472af1a18,
+        type: 3}
+      propertyPath: spawnLevel
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7743586126689193885, guid: ce563de5aeff46246b02684472af1a18,
         type: 3}
       propertyPath: m_Name
@@ -475,15 +480,20 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8545273825313258966, guid: ce563de5aeff46246b02684472af1a18,
+        type: 3}
+      propertyPath: _health
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 9015777928783991100, guid: ce563de5aeff46246b02684472af1a18,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.57
+      value: 10.6
       objectReference: {fileID: 0}
     - target: {fileID: 9015777928783991100, guid: ce563de5aeff46246b02684472af1a18,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.24
+      value: -1.71
       objectReference: {fileID: 0}
     - target: {fileID: 9015777928783991100, guid: ce563de5aeff46246b02684472af1a18,
         type: 3}

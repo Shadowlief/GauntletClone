@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Burgess, Lillian]
- * Last Updated: [04/19/2024]
+ * Last Updated: [04/25/2024]
  * [Grunt Enemy]
  */
 
@@ -24,5 +24,21 @@ public class GruntEnemy : Enemy
     protected override void Attack(GameObject player)
     {
         player.GetComponent<PlayerHealth>().Damage(enemyAttkStr);
+    }
+
+    /// <summary>
+    /// decreace the level of the enemy by 1
+    /// and adjust offensive (and possibly defensive) stats accordingly
+    /// </summary>
+    /// <param name="oldLvl"></param>
+    protected override void DegradePower(int oldLvl)
+    {
+        int currLvl = oldLvl- 1;
+        SetEnemyLvl(currLvl);
+        Debug.Log("New Level (should be 1): " + GetEnemyLvl());
+        if (enemyLvl == 2)
+            enemyAttkStr = 8;
+        else
+            enemyAttkStr = 5;
     }
 }

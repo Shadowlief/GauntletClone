@@ -68,7 +68,7 @@ GameObject:
   - component: {fileID: 6252675575458586443}
   - component: {fileID: 7715789693828641883}
   - component: {fileID: 2246854926904426898}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TestLobber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,6 +175,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   closestPlayer: {fileID: 0}
+  lobberProjectile: {fileID: 5012550066024435563, guid: ea9eb6f0e8eb0e9499927ecd6d318bbe,
+    type: 3}
 --- !u!54 &7715789693828641883
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -214,5 +216,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3115b586342fdd5438d2e4815e307efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 15
-  _isMeleeable: 0
+  _health: 10
+  _isMeleeable: 1

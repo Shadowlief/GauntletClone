@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5345768356878866277}
   - component: {fileID: 3392433161304962386}
   - component: {fileID: 6428519153782030006}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TestSorcerer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,6 +148,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   closestPlayer: {fileID: 0}
+  sorcererProjectile: {fileID: 1149918757540138124, guid: 638b7bae67a187e4f940055317672f1a,
+    type: 3}
 --- !u!114 &6428519153782030006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,5 +162,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3115b586342fdd5438d2e4815e307efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 15
+  _health: 10
   _isMeleeable: 1

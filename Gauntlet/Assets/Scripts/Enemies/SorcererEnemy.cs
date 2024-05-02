@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Burgess, Lillian]
- * Last Updated: [04/19/2024]
+ * Last Updated: [05/02/2024]
  * [Sorcerer Enemy]
  */
 
@@ -14,6 +14,12 @@ public class SorcererEnemy : Enemy
     protected bool amShooting = false;
     protected Coroutine shootBuffer;
     protected bool amInvisible = false;
+    protected int invisChecker;
+    [SerializeField] protected GameObject sorcererProjectile;
+    private float _shotSpeed = 1f;
+    protected float spawnFrom = 2f;
+    protected Vector3 spawnLoc;
+    protected GameObject yeetus;
     protected void Awake()
     {
         if (enemyLvl == 3)
@@ -43,7 +49,10 @@ public class SorcererEnemy : Enemy
             shootBuffer = StartCoroutine(ShootBuffer());
             amShooting = true;
         }
-        InvisibleToggle();
+        if(!amInvisible)
+        {
+            InvisibleToggle();
+        }
     }
     //when the coroutine is ready
     //fire a projectile
@@ -51,31 +60,33 @@ public class SorcererEnemy : Enemy
     protected IEnumerator ShootBuffer()
     {
         yield return new WaitForSeconds(0.5f);
-        Shoot();
+        //Shoot();
         amShooting = false;
     }
     protected void Shoot()
     {
-        Debug.Log("FIRE AWAY!!");
-        //Instantiate(DemonProjectile);
-        //Future me note: Shots damage enemies, potions, and players
+        Debug.Log("Magical Spellz!!");
+        spawnLoc = transform.position + (transform.up * spawnFrom);
+        yeetus = Instantiate(sorcererProjectile, spawnLoc, transform.rotation);
+        yeetus.GetComponent<EnemyProjectile>().SetUp(_shotSpeed, enemyShotStr);
     }
     protected void InvisibleToggle()
     {
-        float invisChecker = UnityEngine.Random.Range(0.0f, 4.0f);
+        invisChecker = UnityEngine.Random.Range(1, 5);
+        Debug.Log("Invis Checker: " + invisChecker);
         if(invisChecker%2 == 0 && !amInvisible) //probably will make the max be bigger to make it less common for the game to have the sorcerer go invis
         {
             Debug.Log("Invisible Wizard Alert!");
             amInvisible = true;
-            //this.GetComponent<MeshRenderer>().Disable();
+            this.GetComponent<MeshRenderer>().enabled = false;
             StartCoroutine(InvisibleTimer());
         }
     }
     protected IEnumerator InvisibleTimer()
     {
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(1.0f);
         Debug.Log("Visibable Wizard Alert");
-        //this.GetComponent<MeshRenderer>().Enable;
+        this.GetComponent<MeshRenderer>().enabled = true;
         amInvisible = true;
     }
     protected override void Attack(GameObject player)
@@ -94,5 +105,20 @@ public class SorcererEnemy : Enemy
             inMeele = false;
         }
         //WHILE INVISIBLE, CANNOT BE THE TARGET OF DAMAGING ATTACKS!!!
+    }
+    /// <summary>
+    /// decreace the level of the enemy by 1
+    /// and adjust offensive (and possibly defensive) stats accordingly
+    /// </summary>
+    /// <param name="oldLvl"></param>
+    protected override void DegradePower(int oldLvl)
+    {
+        int currLvl = oldLvl--;
+        SetEnemyLvl(currLvl);
+        Debug.Log("New Level (should be 1): " + GetEnemyLvl());
+        if (enemyLvl == 2)
+            enemyAttkStr = 8;
+        else
+            enemyAttkStr = 5;
     }
 }
