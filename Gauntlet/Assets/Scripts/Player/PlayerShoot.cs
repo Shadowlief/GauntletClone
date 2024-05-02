@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [04/20/2024]
+ * Last Updated: [04/30/2024]
  * [Script that handles the player's shooting]
  */
 
@@ -27,7 +27,10 @@ public class PlayerShoot : MonoBehaviour
 
     private void Update()
     {
-        HandledShot();
+        if (_playerController.hasChosenClass)
+        {
+            HandledShot();
+        }
     }
 
     private void HandledShot()
