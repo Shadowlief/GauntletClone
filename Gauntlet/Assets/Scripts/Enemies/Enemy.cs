@@ -54,8 +54,7 @@ public abstract class Enemy : MonoBehaviour
     void Start()
     {
         enemyMovement = StartCoroutine(MovementTimer());
-        closestPlr = GameObject.FindGameObjectsWithTag("Player");
-        closestPlayer = closestPlr[0];
+        FindClosestPlayer();
         players = new Collider[4];
     }
 
@@ -96,9 +95,15 @@ public abstract class Enemy : MonoBehaviour
         //gameObject player = findPlayer
         //calculate which player is closest
         FindClosestPlayer();
-        //Debug.Log("Closest Player = " + closestPlayer);
-        this.transform.position = Vector3.MoveTowards(this.transform.position, closestPlayer.transform.position, enemySpeed * Time.deltaTime);
-        this.transform.up = closestPlayer.transform.position - this.transform.position;
+        if (closestPlayer != null)
+        {
+            //Debug.Log("Closest Player = " + closestPlayer);
+            this.transform.position = Vector3.MoveTowards(this.transform.position, closestPlayer.transform.position, enemySpeed * Time.deltaTime);
+            this.transform.up = closestPlayer.transform.position - this.transform.position;
+        }else
+        {
+            this.transform.position = this.transform.position + Vector3.up;
+        }
         //if(noPlayer)
         //this.transform.position = this.transform.position + transform.right;
     }
