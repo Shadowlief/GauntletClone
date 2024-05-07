@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0fb3534f710e9d946b777c034ede15a0, type: 3}
-  m_Name: Food
+  m_Name: Key
   m_EditorClassIdentifier: 
-  _heal: 100
+  _heal: 0
   _increaseMoveSpeed: 0
   _increaseDefense: 0
   _increaseShotStrength: 0
   _increaseShotSpeed: 0
   _increaseMeleeStrength: 0
   _increaseMagicStrength: 0
-  _increaseScore: 0
-  _addKey: 0
+  _increaseScore: 100
+  _addKey: 1
   _addPotion: 0

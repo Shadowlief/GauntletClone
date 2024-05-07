@@ -33,13 +33,34 @@ public class Item : ScriptableObject, IItemVisitor
     /// <param name="playerData"></param>
     public void Visit(PlayerData playerData)
     {
-        playerData.currentHp += _heal;
-        playerData.currentMovementSpeed += _increaseMoveSpeed;
-        playerData.currentDefence += _increaseDefense;
-        playerData.currentShotSpeed += _increaseShotSpeed;
-        playerData.currentShotStrength += _increaseShotStrength;
-        playerData.currentMeleeStrength += _increaseMeleeStrength;
-        playerData.currentMagicStrength += _increaseMagicStrength;
+        if (!playerData.upgradedHp)
+        {
+            playerData.currentHp += _heal;
+        }
+        if (!playerData.upgradedMovementSpeed)
+        {
+            playerData.currentMovementSpeed += _increaseMoveSpeed;
+        }
+        if (!playerData.upgradedDefence)
+        {
+            playerData.currentDefence += _increaseDefense;
+        }
+        if (!playerData.upgradedShotSpeed)
+        {
+            playerData.currentShotSpeed += _increaseShotSpeed;
+        }
+        if (!playerData.upgradedShotStrength)
+        {
+            playerData.currentShotStrength += _increaseShotStrength;
+        }
+        if (!playerData.upgradedMeleeStrength)
+        {
+            playerData.currentMeleeStrength += _increaseMeleeStrength;
+        }
+        if (!playerData.upgradedMagicStrength)
+        {
+            playerData.currentMagicStrength += _increaseMagicStrength;
+        }
     }
 
     /// <summary>
