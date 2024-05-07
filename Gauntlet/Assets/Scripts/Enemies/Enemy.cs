@@ -5,7 +5,7 @@ using UnityEngine;
 
 /*
  * Author: [Burgess, Lillian]
- * Last Updated: [05/02/2024]
+ * Last Updated: [05/07/2024]
  * [Base Enemy]
  */
 public abstract class Enemy : MonoBehaviour
@@ -22,6 +22,8 @@ public abstract class Enemy : MonoBehaviour
     //TEMP CODE LILY!!!
     //Eventually repurpose into it being the closest player
     [SerializeField] protected GameObject closestPlayer;
+    protected int _playerLayer = 8;
+    protected int _playerLayerMask;
     protected Vector3 moveToMe;
     protected GameObject[] closestPlr;
     protected Collider[] players;
@@ -54,6 +56,7 @@ public abstract class Enemy : MonoBehaviour
     void Start()
     {
         enemyMovement = StartCoroutine(MovementTimer());
+        _playerLayerMask = (1 << _playerLayer);
         FindClosestPlayer();
         players = new Collider[4];
     }
@@ -118,7 +121,7 @@ public abstract class Enemy : MonoBehaviour
     /// </summary>
     protected virtual void FindClosestPlayer()
     {
-        playerCount = Physics.OverlapSphereNonAlloc(this.transform.position, 50, players, 8);  //replace 0 with the int of the layer mask of Players
+        playerCount = Physics.OverlapSphereNonAlloc(this.transform.position, 50, players, _playerLayerMask);  //reason why it's _playerLayerMask is to get the correct info passed in!!)
         if(playerCount > 1)
         {
             Debug.Log("Find the closest player!");

@@ -10,7 +10,8 @@ public class DeathEnemy : Enemy
     {
         enemyAttkStr = 100;
         pointsOnDefeat = 1000;
-        enemyHP = int.MaxValue;
+        //enemyHP = int.MaxValue;
+        enemyLvl = 3;
     }
     /// <summary>
     /// Do 10 dmg
