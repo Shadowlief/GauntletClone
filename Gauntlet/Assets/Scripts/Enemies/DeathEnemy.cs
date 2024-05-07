@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Author: [Burgess, Lillian]
+ * Last Updated: [05/07/2024]
+ * [Base Enemy]
+ */
 public class DeathEnemy : Enemy
 {
     protected int currentHealthTaken = 0;
@@ -24,6 +29,7 @@ public class DeathEnemy : Enemy
         currentHealthTaken = currentHealthTaken + enemyAttkStr;
         if(currentHealthTaken == maxHealthTaken)
         {
+            Debug.Log("Took 200 health!");
             Destroy(this);
         }
     }

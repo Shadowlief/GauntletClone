@@ -15,8 +15,8 @@ public class DemonEnemy : Enemy
     protected Coroutine shootBuffer;
     [SerializeField] protected GameObject demonProjectile;
     protected float spawnFrom = 2f;
-    private float _fireRate = 0.5f;
-    private float _shotSpeed = 1f;
+    private float _fireRate = 1f;
+    private float _shotSpeed = 3f;
     protected Vector3 spawnLoc;
     protected GameObject yeetus;
     protected void Awake()

@@ -28,6 +28,8 @@ public abstract class Enemy : MonoBehaviour
     protected GameObject[] closestPlr;
     protected Collider[] players;
     protected int playerCount;
+    protected Ray _playerBlocker;
+    protected float _playerBlockerStopDistance = .51f;
 
     public int GetEnemyHP()
     {
@@ -70,12 +72,12 @@ public abstract class Enemy : MonoBehaviour
             enemyMovement = StartCoroutine(MovementTimer());
         }
         //if I'm a lv3 enemy and I loose 1/3 of my health, decreace my level by 1
-        if(enemyLvl == 3 && this.GetComponent<EnemeyHealthScript>().GetCurrentHealth() <= 20)
+        if(enemyLvl == 3 && this.GetComponent<EnemeyHealthScript>().GetCurrentHealth() < 20)
         {
             DegradePower(enemyLvl);
         }
         //if I'm a lv2 enemy and I loose one half of my health, decreace my level by 1
-        else if(enemyLvl == 2 && this.GetComponent<EnemeyHealthScript>().GetCurrentHealth() <= 10)
+        else if(enemyLvl == 2 && this.GetComponent<EnemeyHealthScript>().GetCurrentHealth() < 10)
         {
             DegradePower(enemyLvl);
         }
@@ -98,12 +100,15 @@ public abstract class Enemy : MonoBehaviour
         //gameObject player = findPlayer
         //calculate which player is closest
         FindClosestPlayer();
-        if (closestPlayer != null)
+        if (closestPlayer != null) //if it can detect a player, go to it
         {
-            //Debug.Log("Closest Player = " + closestPlayer);
-            this.transform.position = Vector3.MoveTowards(this.transform.position, closestPlayer.transform.position, enemySpeed * Time.deltaTime);
-            this.transform.up = closestPlayer.transform.position - this.transform.position;
-        }else
+            _playerBlocker = new Ray(transform.position, transform.up);
+            if (!Physics.Raycast(_playerBlocker, out RaycastHit hit, _playerBlockerStopDistance, _playerLayerMask, QueryTriggerInteraction.Collide)) //if I am not adjacent to the player, move towards it
+            {
+                this.transform.position = Vector3.MoveTowards(this.transform.position, closestPlayer.transform.position, enemySpeed * Time.deltaTime);
+                this.transform.up = closestPlayer.transform.position - this.transform.position;
+            }
+        }else //if I cannot detect a player, move up
         {
             this.transform.position = this.transform.position + Vector3.up;
         }
