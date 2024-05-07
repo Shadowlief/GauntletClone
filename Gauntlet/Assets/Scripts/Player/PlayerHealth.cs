@@ -27,6 +27,7 @@ public class PlayerHealth : MonoBehaviour, BaseHealthScript
     public void Damage(int damage)
     {
         _playerData.currentHp -= (damage - _playerData.currentDefence);
+        Debug.Log("Player curr HP: " + _playerData.currentHp);
 
         if (_playerData.currentHp <= 0)
         {

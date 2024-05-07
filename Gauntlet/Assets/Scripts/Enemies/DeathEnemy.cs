@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Author: [Burgess, Lillian]
+ * Last Updated: [05/07/2024]
+ * [Base Enemy]
+ */
 public class DeathEnemy : Enemy
 {
     protected int currentHealthTaken = 0;
@@ -10,7 +15,8 @@ public class DeathEnemy : Enemy
     {
         enemyAttkStr = 100;
         pointsOnDefeat = 1000;
-        enemyHP = int.MaxValue;
+        //enemyHP = int.MaxValue;
+        enemyLvl = 3;
     }
     /// <summary>
     /// Do 10 dmg
@@ -23,6 +29,7 @@ public class DeathEnemy : Enemy
         currentHealthTaken = currentHealthTaken + enemyAttkStr;
         if(currentHealthTaken == maxHealthTaken)
         {
+            Debug.Log("Took 200 health!");
             Destroy(this);
         }
     }
