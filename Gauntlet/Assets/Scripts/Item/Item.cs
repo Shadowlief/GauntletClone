@@ -78,15 +78,13 @@ public class Item : ScriptableObject, IItemVisitor
     /// <param name="playerData"></param>
     public void Visit(PlayerInventory playerInventory)
     {
-        if (_addKey && playerInventory.currentInventorySize < playerInventory.maxInventroySize)
+        if (_addKey)
         {
-            playerInventory.numOfKeys++; 
-            playerInventory.currentInventorySize++; 
+            playerInventory.AddKey();
         }
-        if (_addKey && playerInventory.currentInventorySize < playerInventory.maxInventroySize)
+        if (_addKey)
         {
-            playerInventory.numOfPotions++;
-            playerInventory.currentInventorySize++;
+            playerInventory.AddPotion();
         }
     }
 }

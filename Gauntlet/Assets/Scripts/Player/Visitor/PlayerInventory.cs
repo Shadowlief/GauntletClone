@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [05/06/2024]
+ * Last Updated: [05/07/2024]
  * [handles player's inventory]
  */
 
@@ -24,6 +24,42 @@ public class PlayerInventory : MonoBehaviour, ICharacterElement
         visitor.Visit(this);
     }
 
+    public void AddKey()
+    {
+        if (_currentInventorySize < _maxInventorySize)
+        {
+            _numOfKeys++;
+            _currentInventorySize++;
+        }
+    }
+
+    public void UseKey()
+    {
+        if (_currentInventorySize > 0)
+        {
+            _numOfKeys--;
+            _currentInventorySize--;
+        }
+    }
+
+    public void AddPotion()
+    {
+        if (_currentInventorySize < _maxInventorySize)
+        {
+            _numOfPotions++;
+            _currentInventorySize++;
+        }
+    }
+
+    public void UsePotion()
+    {
+        if (_currentInventorySize > 0)
+        {
+            _numOfPotions--;
+            _currentInventorySize--;
+        }
+    }
+
     public int maxInventroySize
     {
         get { return _maxInventorySize; }
@@ -32,17 +68,14 @@ public class PlayerInventory : MonoBehaviour, ICharacterElement
     public int currentInventorySize
     {
         get { return _currentInventorySize; }
-        set { _currentInventorySize = value; }
     }
 
     public int numOfKeys
     {
         get { return _numOfKeys; }
-        set { _numOfKeys = value; }
     }
     public int numOfPotions
     {
         get { return _numOfPotions; }
-        set { _numOfPotions = value; }
     }
 }

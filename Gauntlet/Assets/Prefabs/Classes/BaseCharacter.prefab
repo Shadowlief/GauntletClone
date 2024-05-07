@@ -222,10 +222,12 @@ GameObject:
   - component: {fileID: 3913780591474259051}
   - component: {fileID: 7931894370643173513}
   - component: {fileID: 748463635496194161}
+  - component: {fileID: -6361726181929257762}
+  - component: {fileID: 1136837670910880113}
   - component: {fileID: 5936505272218940157}
   - component: {fileID: 2874406924011664781}
   - component: {fileID: 1196388532503421102}
-  - component: {fileID: -6361726181929257762}
+  - component: {fileID: 1494721068644424419}
   m_Layer: 8
   m_Name: BaseCharacter
   m_TagString: Player
@@ -406,6 +408,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 24cbbf79-1f2a-43c0-b4b3-4d86006a5a65
     m_ActionName: Player/Shoot[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4362871472305141918}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnUsePotion
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f6ef644b-f8c2-4fbe-ab23-dfe369b70efb
+    m_ActionName: Player/UsePotion[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: Player
@@ -462,6 +480,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6db150508ab46614f879a64ed43a0f49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6361726181929257762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8643000073709220220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d2e5a4318caee4418cf3e104a6baba6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1136837670910880113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8643000073709220220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23798223b734883418fcc4bc09526804, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5936505272218940157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -512,7 +554,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 54e99a83f47b40e4290c71d2fc37a04b, type: 2}
   - {fileID: 2100000, guid: 7684abedc19c159468d3aa3fb7a19dc8, type: 2}
   - {fileID: 2100000, guid: 09217f67e64b31e4e9e6930416ace21f, type: 2}
---- !u!114 &-6361726181929257762
+--- !u!114 &1494721068644424419
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -521,6 +563,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8643000073709220220}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d2e5a4318caee4418cf3e104a6baba6, type: 3}
+  m_Script: {fileID: 11500000, guid: fdae2cffaacc4244bacb321d3a7a89f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
