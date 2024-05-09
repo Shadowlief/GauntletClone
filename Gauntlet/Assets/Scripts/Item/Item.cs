@@ -82,7 +82,7 @@ public class Item : ScriptableObject, IItemVisitor
         {
             playerInventory.AddKey();
         }
-        if (_addKey)
+        if (_addPotion)
         {
             playerInventory.AddPotion();
         }

@@ -24,6 +24,9 @@ public class PlayerInventory : MonoBehaviour, ICharacterElement
         visitor.Visit(this);
     }
 
+    /// <summary>
+    /// adds key to inventory
+    /// </summary>
     public void AddKey()
     {
         if (_currentInventorySize < _maxInventorySize)
@@ -33,6 +36,9 @@ public class PlayerInventory : MonoBehaviour, ICharacterElement
         }
     }
 
+    /// <summary>
+    /// removes key from inventory
+    /// </summary>
     public void UseKey()
     {
         if (_currentInventorySize > 0)
@@ -42,6 +48,9 @@ public class PlayerInventory : MonoBehaviour, ICharacterElement
         }
     }
 
+    /// <summary>
+    /// adds potion to inventory
+    /// </summary>
     public void AddPotion()
     {
         if (_currentInventorySize < _maxInventorySize)
@@ -51,6 +60,9 @@ public class PlayerInventory : MonoBehaviour, ICharacterElement
         }
     }
 
+    /// <summary>
+    /// removes potion from inventory
+    /// </summary>
     public void UsePotion()
     {
         if (_currentInventorySize > 0)
@@ -59,6 +71,8 @@ public class PlayerInventory : MonoBehaviour, ICharacterElement
             _currentInventorySize--;
         }
     }
+
+    //getters and setters
 
     public int maxInventroySize
     {

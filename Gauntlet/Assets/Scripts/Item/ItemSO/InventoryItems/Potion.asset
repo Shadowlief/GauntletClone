@@ -21,4 +21,4 @@ MonoBehaviour:
   _increaseMagicStrength: 0
   _increaseScore: 0
   _addKey: 0
-  _addPotion: 0
+  _addPotion: 1
