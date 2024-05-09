@@ -56,7 +56,7 @@ public class PlayerMagic : MonoBehaviour
             {
                 EnemeyHealthScript health = enemy.GetComponent<EnemeyHealthScript>();
 
-                health.Damage(_playerData.currentMagicStrength);
+                health.Damage(_playerData.currentMagicStrength * 2);
             }
         }
 
