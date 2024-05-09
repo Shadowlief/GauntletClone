@@ -188,6 +188,11 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 418745687617796020}
+    - target: {fileID: 1494721068644424419, guid: 181eb952dca5afc42b39b1ff5f05dabd,
+        type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 418745687617796020}
     - target: {fileID: 1773545680316963144, guid: 181eb952dca5afc42b39b1ff5f05dabd,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -248,6 +253,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9ece5991718754240bf654662c804249, type: 2}
+    - target: {fileID: 5936505272218940157, guid: 181eb952dca5afc42b39b1ff5f05dabd,
+        type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 418745687617796020}
     - target: {fileID: 8643000073709220220, guid: 181eb952dca5afc42b39b1ff5f05dabd,
         type: 3}
       propertyPath: m_Name

@@ -16,6 +16,8 @@ public class PlayerVisitorController : MonoBehaviour, ICharacterElement
     private void Start()
     {
         _characterElements.Add(gameObject.GetComponent<PlayerData>());
+        _characterElements.Add(gameObject.GetComponent<PlayerScore>());
+        _characterElements.Add(gameObject.GetComponent<PlayerInventory>());
     }
 
     /// <summary>

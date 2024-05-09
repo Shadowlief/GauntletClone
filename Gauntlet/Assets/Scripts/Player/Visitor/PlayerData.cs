@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [04/30/2024]
+ * Last Updated: [05/06/2024]
  * [Script for players current stats]
  */
 
@@ -17,6 +17,14 @@ public class PlayerData : MonoBehaviour, ICharacterElement
     private int _currentShotSpeed;
     private int _currentMeleeStrength;
     private int _currentMagicStrength;
+
+    private bool _upgradedHp = false;
+    private bool _upgradedMovementSpeed = false;
+    private bool _upgradedDefence = false;
+    private bool _upgradedShotStrength = false;
+    private bool _upgradedShotSpeed = false;
+    private bool _upgradedMeleeStrength = false;
+    private bool _upgradedMagicStrength = false;
 
     /// <summary>
     /// set the stats
@@ -82,5 +90,47 @@ public class PlayerData : MonoBehaviour, ICharacterElement
     {
         get { return _currentMagicStrength; }
         set { _currentMagicStrength = value; }
+    }
+
+    public bool upgradedHp
+    {
+        get { return _upgradedHp; }
+        set { _upgradedHp = value; }
+    }
+
+    public bool upgradedMovementSpeed
+    {
+        get { return _upgradedMovementSpeed; }
+        set { _upgradedMovementSpeed = value; }
+    }
+
+    public bool upgradedDefence
+    {
+        get { return _upgradedDefence; }
+        set { _upgradedDefence = value; }
+    }
+
+    public bool upgradedShotStrength
+    {
+        get { return _upgradedShotStrength; }
+        set { _upgradedShotStrength = value; }
+    }
+
+    public bool upgradedShotSpeed
+    {
+        get { return _upgradedShotSpeed; }
+        set { _upgradedShotSpeed = value; }
+    }
+
+    public bool upgradedMeleeStrength
+    {
+        get { return _upgradedMeleeStrength; }
+        set { _upgradedMeleeStrength = value; }
+    }
+
+    public bool upgradedMagicStrength
+    {
+        get { return _upgradedMagicStrength; }
+        set { _upgradedMagicStrength = value; }
     }
 }

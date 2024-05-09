@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2332868053777963742}
   m_Layer: 6
   m_Name: Walls_KeyDestroyable
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

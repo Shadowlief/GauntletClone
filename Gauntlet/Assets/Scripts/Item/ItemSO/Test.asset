@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Test
   m_EditorClassIdentifier: 
   _heal: 0
-  _increaseMoveSpeed: 5
+  _increaseMoveSpeed: 0
   _increaseDefense: 0
   _increaseShotStrength: 0
   _increaseShotSpeed: 0
   _increaseMeleeStrength: 0
   _increaseMagicStrength: 0
+  _increaseScore: 100
