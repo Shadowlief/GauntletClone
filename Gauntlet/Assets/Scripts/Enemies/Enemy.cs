@@ -129,7 +129,6 @@ public abstract class Enemy : MonoBehaviour
         playerCount = Physics.OverlapSphereNonAlloc(this.transform.position, 50, players, _playerLayerMask);  //reason why it's _playerLayerMask is to get the correct info passed in!!)
         if(playerCount > 1)
         {
-            Debug.Log("Find the closest player!");
             closestPlayer = players[0].gameObject;
         }
         else if(playerCount == 1) //why this is an else if instead of an else is to catch the situation of if it doesn't find a player that's within a 50 unit radius
