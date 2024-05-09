@@ -16,7 +16,7 @@ public class SorcererEnemy : Enemy
     protected bool amInvisible = false;
     protected int invisChecker;
     [SerializeField] protected GameObject sorcererProjectile;
-    private float _shotSpeed = 1f;
+    private float _shotSpeed = 3f;
     protected float spawnFrom = 2f;
     protected Vector3 spawnLoc;
     protected GameObject yeetus;
@@ -59,8 +59,8 @@ public class SorcererEnemy : Enemy
     //then say that I can fire again
     protected IEnumerator ShootBuffer()
     {
-        yield return new WaitForSeconds(0.5f);
-        //Shoot();
+        yield return new WaitForSeconds(1f);
+        Shoot();
         amShooting = false;
     }
     protected void Shoot()
@@ -115,7 +115,6 @@ public class SorcererEnemy : Enemy
     {
         int currLvl = oldLvl--;
         SetEnemyLvl(currLvl);
-        Debug.Log("New Level (should be 1): " + GetEnemyLvl());
         if (enemyLvl == 2)
             enemyAttkStr = 8;
         else

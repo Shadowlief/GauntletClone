@@ -5,7 +5,7 @@ using UnityEngine;
 
 /*
  * Author: [Burgess, Lillian]
- * Last Updated: [05/02/2024]
+ * Last Updated: [05/07/2024]
  * [Base Enemy]
  */
 public abstract class Enemy : MonoBehaviour
@@ -22,10 +22,14 @@ public abstract class Enemy : MonoBehaviour
     //TEMP CODE LILY!!!
     //Eventually repurpose into it being the closest player
     [SerializeField] protected GameObject closestPlayer;
+    protected int _playerLayer = 8;
+    protected int _playerLayerMask;
     protected Vector3 moveToMe;
     protected GameObject[] closestPlr;
     protected Collider[] players;
     protected int playerCount;
+    protected Ray _playerBlocker;
+    protected float _playerBlockerStopDistance = .51f;
 
     public int GetEnemyHP()
     {
@@ -54,8 +58,8 @@ public abstract class Enemy : MonoBehaviour
     void Start()
     {
         enemyMovement = StartCoroutine(MovementTimer());
-        closestPlr = GameObject.FindGameObjectsWithTag("Player");
-        closestPlayer = closestPlr[0];
+        _playerLayerMask = (1 << _playerLayer);
+        FindClosestPlayer();
         players = new Collider[4];
     }
 
@@ -68,12 +72,12 @@ public abstract class Enemy : MonoBehaviour
             enemyMovement = StartCoroutine(MovementTimer());
         }
         //if I'm a lv3 enemy and I loose 1/3 of my health, decreace my level by 1
-        if(enemyLvl == 3 && this.GetComponent<EnemeyHealthScript>().GetCurrentHealth() <= 20)
+        if(enemyLvl == 3 && this.GetComponent<EnemeyHealthScript>().GetCurrentHealth() < 20)
         {
             DegradePower(enemyLvl);
         }
         //if I'm a lv2 enemy and I loose one half of my health, decreace my level by 1
-        else if(enemyLvl == 2 && this.GetComponent<EnemeyHealthScript>().GetCurrentHealth() <= 10)
+        else if(enemyLvl == 2 && this.GetComponent<EnemeyHealthScript>().GetCurrentHealth() < 10)
         {
             DegradePower(enemyLvl);
         }
@@ -96,9 +100,18 @@ public abstract class Enemy : MonoBehaviour
         //gameObject player = findPlayer
         //calculate which player is closest
         FindClosestPlayer();
-        //Debug.Log("Closest Player = " + closestPlayer);
-        this.transform.position = Vector3.MoveTowards(this.transform.position, closestPlayer.transform.position, enemySpeed * Time.deltaTime);
-        this.transform.up = closestPlayer.transform.position - this.transform.position;
+        if (closestPlayer != null) //if it can detect a player, go to it
+        {
+            _playerBlocker = new Ray(transform.position, transform.up);
+            if (!Physics.Raycast(_playerBlocker, out RaycastHit hit, _playerBlockerStopDistance, _playerLayerMask, QueryTriggerInteraction.Collide)) //if I am not adjacent to the player, move towards it
+            {
+                this.transform.position = Vector3.MoveTowards(this.transform.position, closestPlayer.transform.position, enemySpeed * Time.deltaTime);
+                this.transform.up = closestPlayer.transform.position - this.transform.position;
+            }
+        }else //if I cannot detect a player, move up
+        {
+            this.transform.position = this.transform.position + Vector3.up;
+        }
         //if(noPlayer)
         //this.transform.position = this.transform.position + transform.right;
     }
@@ -113,7 +126,7 @@ public abstract class Enemy : MonoBehaviour
     /// </summary>
     protected virtual void FindClosestPlayer()
     {
-        playerCount = Physics.OverlapSphereNonAlloc(this.transform.position, 50, players, 8);  //replace 0 with the int of the layer mask of Players
+        playerCount = Physics.OverlapSphereNonAlloc(this.transform.position, 50, players, _playerLayerMask);  //reason why it's _playerLayerMask is to get the correct info passed in!!)
         if(playerCount > 1)
         {
             Debug.Log("Find the closest player!");
