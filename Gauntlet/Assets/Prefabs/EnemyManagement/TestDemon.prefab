@@ -162,5 +162,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   closestPlayer: {fileID: 0}
-  demonProjectile: {fileID: 1149918757540138124, guid: 638b7bae67a187e4f940055317672f1a,
+  demonProjectile: {fileID: 5012550066024435563, guid: ea9eb6f0e8eb0e9499927ecd6d318bbe,
     type: 3}
