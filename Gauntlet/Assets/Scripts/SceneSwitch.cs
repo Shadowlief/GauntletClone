@@ -16,6 +16,7 @@ public class SceneSwitch : MonoBehaviour
     [SerializeField] private string _nextSceneName;
     private int _playersInHole = 0;
     private List<GameObject> playerYeetus = new List<GameObject>();
+    private GameObject hitboxToggle;
     private AsyncOperation sceneAsync;
 
     /// <summary>
@@ -34,6 +35,9 @@ public class SceneSwitch : MonoBehaviour
             other.transform.position = new Vector3(0,0,0);
             other.gameObject.GetComponent<BoxCollider>().enabled = false;
             other.gameObject.GetComponent<MeshRenderer>().enabled = false;
+            hitboxToggle = other.gameObject.transform.GetChild(0).gameObject;
+            hitboxToggle.gameObject.GetComponent<MeshRenderer>().enabled = false;
+            hitboxToggle.gameObject.GetComponent<BoxCollider>().enabled = false;
             GameObject grabber = other.gameObject;
             GameObject tgrabber = GameObject.Find("BaseCharacterParent(Clone)");
             playerYeetus.Add(other.gameObject);
@@ -45,6 +49,9 @@ public class SceneSwitch : MonoBehaviour
                 {
                     playerYeetus[counter].gameObject.GetComponent<BoxCollider>().enabled = true;
                     playerYeetus[counter].gameObject.GetComponent<MeshRenderer>().enabled = true;
+                    hitboxToggle = playerYeetus[counter].gameObject.transform.GetChild(0).gameObject;
+                    hitboxToggle.gameObject.GetComponent<MeshRenderer>().enabled = true;
+                    hitboxToggle.gameObject.GetComponent<BoxCollider>().enabled = true;
                 }
                 SceneManager.LoadScene(_sceneToLoad);
             }
