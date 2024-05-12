@@ -52,6 +52,7 @@ public class PlayerManager : Singleton<PlayerManager>
     public void AddPlayer(GameObject player)
     {
         _currentPlayers.Add(player);
+        DontDestroyOnLoad(player.transform.root.gameObject);
     }
 
     /// <summary>

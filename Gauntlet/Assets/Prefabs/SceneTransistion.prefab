@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1246802032033120280}
   - component: {fileID: 8852272365618460688}
   - component: {fileID: 5962661517391309377}
-  - component: {fileID: 4089656715384230943}
+  - component: {fileID: 1152255682870971718}
   m_Layer: 0
   m_Name: SceneTransistion
   m_TagString: LevelExit
@@ -106,7 +106,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4089656715384230943
+--- !u!114 &1152255682870971718
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,3 +118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e4c823a9bd261c448c9ae78d41969e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sceneToLoad: 0
+  _nextSceneName:
+    m_Handle: 0
