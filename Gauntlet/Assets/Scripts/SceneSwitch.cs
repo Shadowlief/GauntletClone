@@ -32,7 +32,7 @@ public class SceneSwitch : MonoBehaviour
         {
             Debug.Log("Player Count: " + PlayerManager.Instance.GetPlayerCount());
             Debug.Log("Down the hole!");
-            other.transform.position = new Vector3(0,0,0);
+            other.transform.position = Vector3.zero;
             other.gameObject.GetComponent<BoxCollider>().enabled = false;
             other.gameObject.GetComponent<MeshRenderer>().enabled = false;
             hitboxToggle = other.gameObject.transform.GetChild(0).gameObject;
@@ -42,9 +42,10 @@ public class SceneSwitch : MonoBehaviour
             GameObject tgrabber = GameObject.Find("BaseCharacterParent(Clone)");
             playerYeetus.Add(other.gameObject);
             _playersInHole++;
+            //check if all the players are in the hole
             if(PlayerManager.Instance.GetPlayerCount() == _playersInHole)
             {
-                //Debug.Log("Count of player: " + playerYeetus.Count);
+                //make it so that the players are visible + targetable again + resets their posistion in case they ran off to who knows were
                 for(int counter = 0; counter < playerYeetus.Count; counter++)
                 {
                     playerYeetus[counter].gameObject.GetComponent<BoxCollider>().enabled = true;
@@ -52,6 +53,7 @@ public class SceneSwitch : MonoBehaviour
                     hitboxToggle = playerYeetus[counter].gameObject.transform.GetChild(0).gameObject;
                     hitboxToggle.gameObject.GetComponent<MeshRenderer>().enabled = true;
                     hitboxToggle.gameObject.GetComponent<BoxCollider>().enabled = true;
+                    playerYeetus[counter].transform.position = Vector3.zero;
                 }
                 SceneManager.LoadScene(_sceneToLoad);
             }
