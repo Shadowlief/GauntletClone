@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 /*
  * Author: [Lam, Justin]
- * Last Updated: [05/02/2024]
+ * Last Updated: [05/13/2024]
  * [Singleton to manage player]
  */
 
@@ -14,6 +14,8 @@ public class PlayerManager : Singleton<PlayerManager>
 {
     private Dictionary<ClassEnum, bool> _availableClasses = new Dictionary<ClassEnum, bool>();
     private List<GameObject> _currentPlayers = new List<GameObject>();
+
+    [SerializeField] private Camera _startCamera;
 
     /// <summary>
     /// adds all classes to list
@@ -53,6 +55,10 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         _currentPlayers.Add(player);
         DontDestroyOnLoad(player.transform.root.gameObject);
+        if (_startCamera.enabled)
+        {
+            _startCamera.enabled = false;
+        }
     }
 
     /// <summary>

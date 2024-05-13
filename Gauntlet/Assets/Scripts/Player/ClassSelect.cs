@@ -14,6 +14,7 @@ public class ClassSelect : MonoBehaviour
     private PlayerController _playerController;
     private MeshRenderer _meshRenderer;
 
+    [SerializeField] private GameObject _guideSprite;
     [SerializeField] private ClassStats[] _stats = new ClassStats[4];
     [SerializeField] private Material[] _materials = new Material[4];
 
@@ -83,6 +84,7 @@ public class ClassSelect : MonoBehaviour
             _playerController.ChosenClass();
             PlayerManager.Instance.ClaimClass(selectedClass);
             PlayerManager.Instance.AddPlayer(gameObject);
+            _guideSprite.SetActive(false);
         }
     }
 
