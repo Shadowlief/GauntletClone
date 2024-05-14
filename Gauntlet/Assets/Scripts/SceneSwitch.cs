@@ -55,6 +55,10 @@ public class SceneSwitch : MonoBehaviour
                     hitboxToggle.gameObject.GetComponent<BoxCollider>().enabled = true;
                     playerYeetus[counter].transform.position = Vector3.zero;
                 }
+                foreach(var gameObj in GameObject.FindGameObjectsWithTag("Enemy"))
+                {
+                    Destroy(gameObj);
+                }
                 SceneManager.LoadScene(_sceneToLoad);
             }
         }

@@ -10,8 +10,9 @@ using UnityEngine;
 
 public class GruntEnemy : Enemy
 {
-    protected void Awake()
+    protected override void Start()
     {
+        base.Start();
         if (enemyLvl == 3)
             enemyAttkStr = 10;
         else if (enemyLvl == 2)
@@ -20,6 +21,14 @@ public class GruntEnemy : Enemy
             enemyAttkStr = 5;
         enemyShotStr = 0;
         pointsOnDefeat = 5 * enemyLvl;
+    }
+    public GameObject GetClosestPlayer()
+    {
+        return closestPlayer;
+    }
+    public int GetPoints()
+    {
+        return pointsOnDefeat;
     }
     protected override void Attack(GameObject player)
     {

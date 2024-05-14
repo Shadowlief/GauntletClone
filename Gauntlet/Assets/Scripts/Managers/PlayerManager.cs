@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 /*
  * Author: [Lam, Justin]
@@ -158,6 +159,7 @@ public class PlayerManager : Singleton<PlayerManager>
         _availableClasses[ClassEnum.Elf] = true;
         _availableClasses[ClassEnum.Wizard] = true;
 
+        SceneManager.LoadScene(0);
         _isGameOver = false;
     }
 

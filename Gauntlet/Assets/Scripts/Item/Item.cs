@@ -36,30 +36,38 @@ public class Item : ScriptableObject, IItemVisitor
         if (!playerData.upgradedHp)
         {
             playerData.currentHp += _heal;
+            playerData.upgradedHp = true;
         }
         if (!playerData.upgradedMovementSpeed)
         {
             playerData.currentMovementSpeed += _increaseMoveSpeed;
+            playerData.upgradedMovementSpeed = true;
+
         }
         if (!playerData.upgradedDefence)
         {
             playerData.currentDefence += _increaseDefense;
+            playerData.upgradedDefence = true;
         }
         if (!playerData.upgradedShotSpeed)
         {
             playerData.currentShotSpeed += _increaseShotSpeed;
+            playerData.upgradedShotSpeed = true;
         }
         if (!playerData.upgradedShotStrength)
         {
             playerData.currentShotStrength += _increaseShotStrength;
+            playerData.upgradedShotStrength = true;
         }
         if (!playerData.upgradedMeleeStrength)
         {
             playerData.currentMeleeStrength += _increaseMeleeStrength;
+            playerData.upgradedMeleeStrength = true;
         }
         if (!playerData.upgradedMagicStrength)
         {
             playerData.currentMagicStrength += _increaseMagicStrength;
+            playerData.upgradedMagicStrength = true;
         }
     }
 

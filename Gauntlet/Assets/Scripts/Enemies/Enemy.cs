@@ -18,7 +18,7 @@ public abstract class Enemy : MonoBehaviour
     protected Coroutine enemyMovement;
     protected bool amMoving = false;
     //enemy movement speed
-    protected float enemySpeed = 15f;
+    protected float enemySpeed = 20f;
     //TEMP CODE LILY!!!
     //Eventually repurpose into it being the closest player
     [SerializeField] protected GameObject closestPlayer;
@@ -55,7 +55,7 @@ public abstract class Enemy : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         enemyMovement = StartCoroutine(MovementTimer());
         _playerLayerMask = (1 << _playerLayer);

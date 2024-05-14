@@ -18,11 +18,20 @@ public class LobberEnemy : Enemy
     private float _shotSpeed = 3f;
     protected Vector3 spawnLoc;
     protected GameObject yeetus;
-    protected void Awake()
+    protected override void Start()
     {
+        base.Start();
         enemyShotStr = 3;
         enemyAttkStr = 0;
         pointsOnDefeat = 5 * enemyLvl;
+    }
+    public GameObject GetClosestPlayer()
+    {
+        return closestPlayer;
+    }
+    public int GetPoints()
+    {
+        return pointsOnDefeat;
     }
     protected override void FixedUpdate()
     {

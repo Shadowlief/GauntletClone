@@ -20,8 +20,9 @@ public class SorcererEnemy : Enemy
     protected float spawnFrom = 2f;
     protected Vector3 spawnLoc;
     protected GameObject yeetus;
-    protected void Awake()
+    protected override void Start()
     {
+        base.Start();
         if (enemyLvl == 3)
             enemyAttkStr = 10;
         else if (enemyLvl == 2)
@@ -30,6 +31,14 @@ public class SorcererEnemy : Enemy
             enemyAttkStr = 5;
         enemyShotStr = 10;
         pointsOnDefeat = 5 * enemyLvl;
+    }
+    public GameObject GetClosestPlayer()
+    {
+        return closestPlayer;
+    }
+    public int GetPoints()
+    {
+        return pointsOnDefeat;
     }
     protected override void FixedUpdate()
     {

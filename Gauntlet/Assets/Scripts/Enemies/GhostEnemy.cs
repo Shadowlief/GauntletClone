@@ -9,13 +9,21 @@ using UnityEngine;
  */
 public class GhostEnemy : Enemy
 {
-    protected void Awake()
+    protected override void Start()
     {
+        base.Start();
         enemyAttkStr = 10 * enemyLvl;
         enemyShotStr = 0;
         pointsOnDefeat = 10 * enemyLvl;
     }
-
+    public GameObject GetClosestPlayer()
+    {
+        return closestPlayer;
+    }
+    public int GetPoints()
+    {
+        return pointsOnDefeat;
+    }
     protected override void Attack(GameObject player)
     {
         player.GetComponent<PlayerHealth>().Damage(enemyAttkStr);

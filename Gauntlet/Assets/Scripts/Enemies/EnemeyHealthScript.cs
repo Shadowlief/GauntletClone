@@ -13,6 +13,9 @@ public class EnemeyHealthScript : MonoBehaviour, BaseHealthScript
     [SerializeField] private int _health;
     private int _currentHealth;
     [SerializeField] private bool _isMeleeable = true;
+    private GameObject player;
+    private PlayerScore playerScore;
+    private int enemyPoints;
 
     private void OnEnable()
     {
@@ -53,7 +56,63 @@ public class EnemeyHealthScript : MonoBehaviour, BaseHealthScript
         //grab the closest player
         //closestPlayer.GetComponent<PlayerData>().PlayerPoints(points);
         //might have the singleton handle this, instead passing in the points and the player that triggered this
+        string name = this.gameObject.name;
+        AwardPoints(name);
         Destroy(this.gameObject);
+    }
+
+    public void AwardPoints(string name)
+    {
+        Debug.Log("Name: " + name);
+        if(name == "TestDeath")
+        {
+            player = this.gameObject.GetComponent<DeathEnemy>().GetClosestPlayer();
+            playerScore = player.GetComponent<PlayerScore>();
+            enemyPoints = this.gameObject.GetComponent<DeathEnemy>().GetPoints();
+            playerScore.currentScore += enemyPoints;
+        }else if (name == "TestDemon(Clone)")
+        {
+            player = this.gameObject.GetComponent<DemonEnemy>().GetClosestPlayer();
+            playerScore = player.GetComponent<PlayerScore>();
+            enemyPoints = this.gameObject.GetComponent<DemonEnemy>().GetPoints();
+            playerScore.currentScore += enemyPoints;
+        }
+        else if (name == "TestGhost(Clone)")
+        {
+            player = this.gameObject.GetComponent<GhostEnemy>().GetClosestPlayer();
+            playerScore = player.GetComponent<PlayerScore>();
+            enemyPoints = this.gameObject.GetComponent<GhostEnemy>().GetPoints();
+            playerScore.currentScore += enemyPoints;
+        }
+        else if (name == "TestGrunt(Clone)")
+        {
+            Debug.Log("Points Deploying: " + this.gameObject.GetComponent<GruntEnemy>().GetPoints());
+            player = this.gameObject.GetComponent<GruntEnemy>().GetClosestPlayer();
+            Debug.Log("Points Deploying: " + player.name);
+            playerScore = player.GetComponent<PlayerScore>();
+            enemyPoints = this.gameObject.GetComponent<GruntEnemy>().GetPoints();
+            playerScore.currentScore = enemyPoints + playerScore.currentScore;
+        }
+        else if (name == "TestLobber(Clone)")
+        {
+            player = this.gameObject.GetComponent<LobberEnemy>().GetClosestPlayer();
+            playerScore = player.GetComponent<PlayerScore>();
+            enemyPoints = this.gameObject.GetComponent<LobberEnemy>().GetPoints();
+            playerScore.currentScore += enemyPoints;
+        }
+        else if (name == "TestSorcerer(Clone)")
+        {
+            player = this.gameObject.GetComponent<SorcererEnemy>().GetClosestPlayer();
+            playerScore = player.GetComponent<PlayerScore>();
+            enemyPoints = this.gameObject.GetComponent<SorcererEnemy>().GetPoints();
+            playerScore.currentScore += enemyPoints;
+        }
+        else if(name == "TestThief")
+        {
+            player = this.gameObject.GetComponent<ThefEnemy>().GetClosestPlayer();
+            playerScore = player.GetComponent<PlayerScore>();
+            playerScore.currentScore += 100;
+        }
     }
 
     public bool isMeleeable

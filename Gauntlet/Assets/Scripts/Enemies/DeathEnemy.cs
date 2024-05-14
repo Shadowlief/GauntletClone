@@ -11,12 +11,21 @@ public class DeathEnemy : Enemy
 {
     protected int currentHealthTaken = 0;
     protected int maxHealthTaken = 200;
-    protected void Awake()
+    protected override void Start()
     {
+        base.Start();
         enemyAttkStr = 100;
         pointsOnDefeat = 1000;
         //enemyHP = int.MaxValue;
         enemyLvl = 3;
+    }
+    public GameObject GetClosestPlayer()
+    {
+        return closestPlayer;
+    }
+    public int GetPoints()
+    {
+        return pointsOnDefeat;
     }
     /// <summary>
     /// Do 10 dmg
