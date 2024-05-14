@@ -8,7 +8,7 @@ using TMPro;
 /*
  * Author: [Lam, Justin]
  * Last Updated: [05/13/2024]
- * [Singleton to manage player]
+ * [Singleton to manage player (also UI stuff)]
  */
 
 public class PlayerManager : Singleton<PlayerManager>
@@ -18,11 +18,17 @@ public class PlayerManager : Singleton<PlayerManager>
     private int[] _finalScores = new int[4];
 
     [SerializeField] private Camera _startCamera;
+
+    //UI stuff
     private TMP_Text[] playerText = new TMP_Text[4];
     [SerializeField] private TMP_Text _p1Text;
     [SerializeField] private TMP_Text _p2Text;
     [SerializeField] private TMP_Text _p3Text;
     [SerializeField] private TMP_Text _p4Text;
+
+    [SerializeField] private GameObject _gameOverUI;
+    private bool _isGameOver = false;
+
 
     /// <summary>
     /// adds all classes to list
@@ -129,9 +135,35 @@ public class PlayerManager : Singleton<PlayerManager>
 
             if (gameOver)
             {
-                Debug.Log("Game Over");
+                _startCamera.enabled = true;
+                _gameOverUI.SetActive(true);
+                _isGameOver = true;
             }
         }
+    }
+
+    public void OnReset()
+    {
+        _gameOverUI.SetActive(false);
+        _currentPlayers = new List<GameObject>();
+        _finalScores = new int[4];
+
+        for (int i = 0; i < playerText.Length; i++)
+        {
+            playerText[i].text = "Player " + (i + 1) + ": Press Esc or Y to Enter";
+        }
+
+        _availableClasses[ClassEnum.Warrior] = true;
+        _availableClasses[ClassEnum.Valkarie] = true;
+        _availableClasses[ClassEnum.Elf] = true;
+        _availableClasses[ClassEnum.Wizard] = true;
+
+        _isGameOver = false;
+    }
+
+    public void OnQuit()
+    {
+        Application.Quit();
     }
 
     public void UpdateFinalScore(GameObject player, int score)
@@ -143,5 +175,10 @@ public class PlayerManager : Singleton<PlayerManager>
     public int GetPlayerCount()
     {
         return _currentPlayers.Count;
+    }
+
+    public bool isGameOver
+    {
+        get { return _isGameOver; }
     }
 }

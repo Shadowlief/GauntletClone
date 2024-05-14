@@ -23,7 +23,7 @@ public class ClassSelect : MonoBehaviour
     /// </summary>
     private void OnEnable()
     {
-        if (PlayerManager.Instance.GetPlayerCount() >= 4)
+        if (PlayerManager.Instance.GetPlayerCount() >= 4 && !PlayerManager.Instance.isGameOver)
         {
             Destroy(transform.root.gameObject);
         }
