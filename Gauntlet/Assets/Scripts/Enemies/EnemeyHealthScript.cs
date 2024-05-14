@@ -112,6 +112,9 @@ public class EnemeyHealthScript : MonoBehaviour, BaseHealthScript
             player = this.gameObject.GetComponent<ThefEnemy>().GetClosestPlayer();
             playerScore = player.GetComponent<PlayerScore>();
             playerScore.currentScore += 100;
+        }else if(name == "TestSpawner")
+        {
+            this.gameObject.SetActive(false);
         }
     }
 

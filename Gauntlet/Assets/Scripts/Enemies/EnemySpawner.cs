@@ -13,6 +13,7 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject enemyType;
     [SerializeField] private int spawnLevel;
+    private int currentSpawnLevel;
     private int spawnerHp;
     private int enemyCap;
     private bool amSpawning = false;
@@ -28,9 +29,10 @@ public class EnemySpawner : MonoBehaviour
         spawnLevel = actualLevel;
     }
 
-    private void Start()
+    private void Awake()
     {
         this.GetComponent<EnemeyHealthScript>().SetEnemyHpTrue(spawnLevel);
+        currentSpawnLevel = spawnLevel;
         spawner = StartCoroutine(SpawnTimer());
     }
 
@@ -45,13 +47,13 @@ public class EnemySpawner : MonoBehaviour
         //if I'm a lv3 spawner and I loose 1/3 of my hp, decreace my level by 1
         if (spawnLevel == 3 && this.GetComponent<EnemeyHealthScript>().GetCurrentHealth() <= 20)
         {
-            spawnLevel--;
+            currentSpawnLevel--;
             Debug.Log("Spawn Level (should be 2) = " + spawnLevel);
         }
         //if I'm a lv2 spawner and I loose half of my hp, decreace my level by 1
         else if (spawnLevel == 2 && this.GetComponent<EnemeyHealthScript>().GetCurrentHealth() <= 10)
         {
-            spawnLevel--;
+            currentSpawnLevel--;
             Debug.Log("Spawn Level (should be 1)  = " + spawnLevel);
         }
     }
@@ -81,8 +83,8 @@ public class EnemySpawner : MonoBehaviour
     {
         //Debug.Log("Spawning Enemy!");
         babyEnemy = Instantiate(enemyType);
-        babyEnemy.GetComponent<Enemy>().SetEnemyLvl(spawnLevel);
-        babyEnemy.GetComponent<EnemeyHealthScript>().SetEnemyHpTrue(spawnLevel);
+        babyEnemy.GetComponent<Enemy>().SetEnemyLvl(currentSpawnLevel);
+        babyEnemy.GetComponent<EnemeyHealthScript>().SetEnemyHpTrue(currentSpawnLevel);
         babyEnemy.transform.position = this.transform.position;
         int childNum = UnityEngine.Random.Range(0, 3);
         Vector3 newEnemyLoc = Vector3.up * -2;

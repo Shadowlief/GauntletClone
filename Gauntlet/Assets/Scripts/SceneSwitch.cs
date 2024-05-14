@@ -14,6 +14,7 @@ public class SceneSwitch : MonoBehaviour
 {
     [SerializeField] private int _sceneToLoad;
     [SerializeField] private string _nextSceneName;
+    [SerializeField] private GameObject respawnMe;
     private int _playersInHole = 0;
     private List<GameObject> playerYeetus = new List<GameObject>();
     private GameObject hitboxToggle;
@@ -58,6 +59,11 @@ public class SceneSwitch : MonoBehaviour
                 foreach(var gameObj in GameObject.FindGameObjectsWithTag("Enemy"))
                 {
                     Destroy(gameObj);
+                }
+                foreach(Transform child in respawnMe.transform)
+                {
+                    GameObject gO = child.gameObject;
+                    gO.SetActive(true);
                 }
                 SceneManager.LoadScene(_sceneToLoad);
             }
