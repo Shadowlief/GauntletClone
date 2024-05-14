@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 /*
  * Author: [Lam, Justin]
@@ -14,8 +15,14 @@ public class PlayerManager : Singleton<PlayerManager>
 {
     private Dictionary<ClassEnum, bool> _availableClasses = new Dictionary<ClassEnum, bool>();
     private List<GameObject> _currentPlayers = new List<GameObject>();
+    private int[] _finalScores = new int[4];
 
     [SerializeField] private Camera _startCamera;
+    private TMP_Text[] playerText = new TMP_Text[4];
+    [SerializeField] private TMP_Text _p1Text;
+    [SerializeField] private TMP_Text _p2Text;
+    [SerializeField] private TMP_Text _p3Text;
+    [SerializeField] private TMP_Text _p4Text;
 
     /// <summary>
     /// adds all classes to list
@@ -26,6 +33,17 @@ public class PlayerManager : Singleton<PlayerManager>
         _availableClasses.Add(ClassEnum.Elf, true);
         _availableClasses.Add(ClassEnum.Valkarie, true);
         _availableClasses.Add(ClassEnum.Wizard, true);
+
+        playerText[0] = _p1Text;
+        playerText[1] = _p2Text;
+        playerText[2] = _p3Text;
+        playerText[3] = _p4Text;
+    }
+
+    private void Update()
+    {
+        UpdateUI();
+        CheckGameOver();
     }
 
     /// <summary>
@@ -77,6 +95,51 @@ public class PlayerManager : Singleton<PlayerManager>
         return null;
     }
 
+    /// <summary>
+    /// updates ui
+    /// </summary>
+    public void UpdateUI()
+    {
+        for (int i = 0; i < _currentPlayers.Count; i++)
+        {
+            //change later so not destroyed
+            if (_currentPlayers[i] != null)
+            {
+                playerText[i].text = "Player " + (i + 1) + ": Health: " + _currentPlayers[i].GetComponent<PlayerData>().currentHp + " Score: " + _currentPlayers[i].GetComponent<PlayerScore>().currentScore;
+            }
+            else
+            {
+                playerText[i].text = "Player " + (i + 1) + ": Health: DEAD Score: " + _finalScores[i];
+            }
+        }
+    }
+
+    public void CheckGameOver()
+    {
+        if (_currentPlayers.Count > 0)
+        {
+            bool gameOver = true;
+            for (int i = 0; i < _currentPlayers.Count; i++)
+            {
+                if (_currentPlayers[i] != null)
+                {
+                    gameOver = false;
+                }
+            }
+
+            if (gameOver)
+            {
+                Debug.Log("Game Over");
+            }
+        }
+    }
+
+    public void UpdateFinalScore(GameObject player, int score)
+    {
+        _finalScores[_currentPlayers.IndexOf(player)] = score;
+    }
+
+    //gets player count
     public int GetPlayerCount()
     {
         return _currentPlayers.Count;
